@@ -35,6 +35,18 @@
 - cabane
 - moteur
 - valise
+- carte
+- porte
+- arbre
+- sucre
+- livre
+- table
+- tigre
+- crabe
+- légume
+- numéro
+- animal
+- minute
 
 ## Niveau 2 · ou, on, an, in, oi, ch
 
@@ -68,6 +80,18 @@
 - cousin
 - mouchoir
 - poivron
+- bouton
+- mouche
+- singe
+- lundi
+- chemise
+- toupie
+- boisson
+- armoire
+- couloir
+- dimanche
+- bouchon
+- savon
 
 ## Niveau 3 · gn, ill, eu, eau, au, ph, qu
 
@@ -103,8 +127,24 @@
 - chaussure
 - pharaon
 - quille
+- ligne
+- vigne
+- papillon
+- coquillage
+- réveil
+- écureuil
+- taureau
+- gauche
+- téléphone
+- phoque
+- quinze
+- magique
+- couleur
+- tableau
+- bureau
+- oreille
 
-## Niveau 4 · Accents, lettres muettes et consonnes doubles
+## Niveau 4 · Accents, lettres muettes, consonnes doubles, m devant m b p, -tion
 
 - éléphant
 - gâteau
@@ -170,8 +210,52 @@
 - noisette
 - gomme
 - vampire
+- chambre
+- jambe
+- timbre
+- tempête
+- lampe
+- pompier
+- champion
+- ombre
+- nombre
+- septembre
+- novembre
+- décembre
+- framboise
+- colombe
+- ampoule
+- compote
+- important
+- impossible
+- addition
+- natation
+- récréation
+- attention
+- question
+- opération
+- punition
+- direction
+- collection
+- invitation
+- solution
+- potion
+- automne
+- hiver
+- printemps
+- femme
+- monsieur
+- oignon
+- sœur
+- œuf
+- bœuf
+- œil
+- nœud
+- outil
+- gentil
+- persil
 
-## Niveau 5 · Pluriels et féminins
+## Niveau 5 · Pluriels, féminins, accords, mots invariables et mots difficiles
 
 - des chats
 - les loups
@@ -228,3 +312,71 @@
 - une skieuse
 - une nageuse
 - une ânesse
+- toujours
+- jamais
+- souvent
+- beaucoup
+- maintenant
+- longtemps
+- aujourd’hui
+- demain
+- pendant
+- depuis
+- pourquoi
+- parfois
+- ensuite
+- bientôt
+- dehors
+- derrière
+- devant
+- encore
+- enfin
+- ensemble
+- autrefois
+- plusieurs
+- heureusement
+- malheureusement
+- cependant
+- pourtant
+- lorsque
+- parce que
+- des chats noirs
+- une petite fille
+- les grandes maisons
+- des fleurs rouges
+- de beaux chevaux
+- les nouveaux élèves
+- une robe blanche
+- des yeux bleus
+- les feuilles mortes
+- une longue histoire
+- des enfants sages
+- trois petits cochons
+- des pommes vertes
+- une vieille sorcière
+- les belles étoiles
+- des animaux sauvages
+- une eau fraîche
+- des journées heureuses
+- les oiseaux migrateurs
+- une forêt profonde
+- bibliothèque
+- dictionnaire
+- géographie
+- orthographe
+- hippopotame
+- rhinocéros
+- pyramide
+- bicyclette
+- labyrinthe
+- rythme
+- xylophone
+- orchestre
+- mystère
+- gymnase
+- technique
+- chorale
+- yaourt
+- football
+- clown
+- wagon

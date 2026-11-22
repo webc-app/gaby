@@ -16,13 +16,14 @@ const H = C.heure;
 /** Les pièges classiques : 12 h d'écart, aiguilles inversées, l'heure d'avant ou d'après, quelques minutes de décalage. */
 function leurres(h, m) {
   const autreMoitie = h >= 12 ? h - 12 : h + 12;
-  const inverse = [(m / 5) % 12 || 12, ((h % 12) * 5) % 60];
+  const inverse = [Math.round(m / 5) % 12 || 12, ((h % 12) * 5) % 60];
   return [
     ecrire(autreMoitie, m),
     ecrire(h - 1, m),
     ecrire(h + 1, m),
     ecrire(h, m + 30),
     ecrire(h, m === 0 ? 15 : m - 5),
+    ...(m % 5 ? [ecrire(h, m + 1), ecrire(h, m - 1), ecrire(h, m + 5)] : []), // à la minute près : la minute d'à côté
     ecrire(h >= 12 ? inverse[0] + 12 : inverse[0], inverse[1]),
   ];
 }

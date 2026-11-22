@@ -2,6 +2,7 @@
 // Chaque erreur dit le fichier, la ligne et quoi corriger. Aucune dépendance.
 import { lireFiches, lireHistoire, lireNombres } from './lire.js';
 import { nomFichier } from '../lib/voix.js';
+import { TEMPS, FICHIERS, PERSONNES } from '../lib/temps.js';
 
 // Les images que l'app sait dessiner (composants/Visuel.svelte)
 export const IMAGES = {
@@ -17,8 +18,9 @@ export const EXERCICES_CALCUL = {
   'complements a 1000': 'complement1000', 'doubles et moities': 'double',
   'petites additions': 'add20', 'petites soustractions': 'sous20', 'complements a 10': 'complement10', 'avec des dizaines': 'dizaines',
   'additions a retenue': 'add100', 'soustractions a retenue': 'sous100', suites: 'suite', 'ajouter 9 ou 11': 'neuf11',
+  fractions: 'fractions', decimaux: 'decimaux', '× 10 avec des decimaux': 'x10decimaux', 'x 10 avec des decimaux': 'x10decimaux',
 };
-const EXERCICES_DIVISION = ['partager', 'paquets', 'famille', 'calcul'];
+const EXERCICES_DIVISION = ['partager', 'paquets', 'famille', 'calcul', 'reste'];
 const MAX_NIVEAUX = 9;
 // Les fichiers image (contenu/images/) : formats acceptés et poids maximal, pour que l'app reste rapide
 export const IMAGE_FORMATS = ['jpg', 'jpeg', 'png', 'svg', 'webp'];
@@ -215,10 +217,13 @@ const ATELIERS = {
   capitales(fiches, err, outils) {
     const pays = [];
     for (const f of fiches) {
-      const c = champs(f, err, { pays: 1, drapeau: '?', capitale: 1 });
-      if (c) pays.push({ niveau: f.niveau, pays: c.pays, drapeau: (c.drapeau && outils.drapeau(c.drapeau, f, err)) || null, capitale: c.capitale, ligne: f.ligne });
+      const c = champs(f, err, { pays: 1, drapeau: '?', capitale: 1, piege: '0-3' });
+      if (c) pays.push({ niveau: f.niveau, pays: c.pays, drapeau: (c.drapeau && outils.drapeau(c.drapeau, f, err)) || null, capitale: c.capitale, pieges: c.piege, ligne: f.ligne });
     }
     doublons(pays, (x) => x.pays, err, 'pays');
+    // « Piège » : une grande ville du pays qui n'est pas sa capitale (Rio de Janeiro) ; jamais la capitale d'un pays du fichier
+    const capitales = new Set(pays.map((x) => sansAccent(x.capitale)));
+    for (const x of pays) for (const v of x.pieges) if (capitales.has(sansAccent(v))) err(x.ligne, `« Piège : ${v} » est une capitale du fichier : mettre une autre grande ville du pays`);
     return { pays: pays.map(({ ligne, ...x }) => x) };
   },
 
@@ -354,7 +359,8 @@ const ATELIERS = {
       const heures = lireNombres(c.heures);
       const minutes = lireNombres(c.minutes);
       if (!heures?.length || heures.some((h) => h > 23)) { err(f.ligne, 'Heures : de 0 à 23, par exemple « 7 à 11 »'); continue; }
-      if (!minutes?.length || minutes.some((m) => m > 59 || m % 5)) { err(f.ligne, 'Minutes : de 5 en 5, par exemple « 0, 30 » ou « 0 à 55 de 5 en 5 »'); continue; }
+      if (!minutes?.length || minutes.some((m) => m > 59)) { err(f.ligne, 'Minutes : de 0 à 59, par exemple « 0, 30 », « 0 à 55 de 5 en 5 » ou « 0 à 59 »'); continue; }
+      if (heures.some((h) => h < 6)) { err(f.ligne, 'Heures : de 6 à 23 (l’app ne sait pas dire « la nuit »)'); continue; }
       if (niveaux[f.niveau]) err(f.ligne, `le niveau ${f.niveau} a déjà sa fiche`);
       niveaux[f.niveau] = { heures, minutes };
     }
@@ -376,9 +382,9 @@ const ATELIERS = {
   },
 };
 
-// Les temps (conjugaison) : des verbes avec leurs six formes, et des phrases à trou qui les utilisent
-const PERSONNES = ['je', 'tu', 'il', 'nous', 'vous', 'ils'];
-ATELIERS.conjugaison = (fiches, err) => {
+// Les temps (présent, futur, imparfait, passé composé) : des verbes avec leurs six formes, et des phrases à trou
+// qui les utilisent. Ce que chaque temps a de particulier est dans src/lib/temps.js.
+const verifierTemps = (T) => (fiches, err) => {
   const verbes = [];
   const phrases = [];
   for (const f of fiches) {
@@ -391,13 +397,17 @@ ATELIERS.conjugaison = (fiches, err) => {
     }
     const c = champs(f, err, { verbe: 1, personnes: '?', pieges: '?', ...Object.fromEntries(PERSONNES.map((p) => [p, 1])) });
     if (!c) continue;
-    // Pièges : des fautes d'orthographe écrites à la personne « je » (fesais), que l'app décline aux autres personnes
     const pieges = c.pieges ? c.pieges.split(',').map((x) => x.trim()).filter(Boolean) : [];
+    if (pieges.length && !T.pieges) err(f.ligne, `pas de « Pièges » ${T.nom} : l’app fabrique seule les fautes`);
     for (const x of pieges) {
-      if (!x.endsWith('ais')) err(f.ligne, `le piège « ${x} » doit être écrit à la personne « je » et finir par -ais`);
-      if (PERSONNES.some((p) => c[p] === x)) err(f.ligne, `le piège « ${x} » est une vraie forme du verbe`);
+      // des fautes d'orthographe écrites à la personne « je » (fesais), que l'app décline aux autres personnes
+      if (T.pieges === 'decline' && !x.endsWith(T.finJe)) err(f.ligne, `le piège « ${x} » doit être écrit à la personne « je » et finir par -${T.finJe}`);
+      // au passé composé : un participe faux (prit), sans l'auxiliaire
+      if (T.pieges === 'participe' && x.includes(' ')) err(f.ligne, `le piège « ${x} » : seulement le participe, sans l’auxiliaire`);
+      if (PERSONNES.some((p) => c[p] === x || c[p].endsWith(` ${x}`))) err(f.ligne, `le piège « ${x} » est une vraie forme du verbe`);
     }
-    if (!c.je.endsWith('ais')) err(f.ligne, `« Je : ${c.je} » devrait finir par -ais`);
+    if (T.finJe && !c.je.endsWith(T.finJe)) err(f.ligne, `« Je : ${c.je} » devrait finir par -${T.finJe}`);
+    if (T.deuxMots) for (const p of PERSONNES) if (c[p].split(' ').length !== 2) err(f.ligne, `« ${c[p]} » : deux mots attendus, l’auxiliaire et le participe (ai joué)`);
     const personnes = c.personnes ? c.personnes.split(',').map((x) => x.trim().toLowerCase()) : PERSONNES;
     const inconnues = personnes.filter((x) => !PERSONNES.includes(x));
     if (inconnues.length) err(f.ligne, `Personnes : ${inconnues.join(', ')} inconnu (possibles : ${PERSONNES.join(', ')})`);
@@ -413,10 +423,13 @@ ATELIERS.conjugaison = (fiches, err) => {
   doublons(phrases, (x) => x.phrase, err, 'phrase');
   return { verbes: verbes.map(({ ligne, ...v }) => v), phrases: phrases.map(({ ligne, ...x }) => x) };
 };
+for (const [id, temps] of Object.entries(FICHIERS)) ATELIERS[id] = verifierTemps(TEMPS[temps]);
 
 // Les Échecs et le Code de la route sont des ateliers à part, avec les mêmes fiches que la Culture
 ATELIERS.echecs = ATELIERS.culture;
 ATELIERS.route = ATELIERS.culture;
+// Grammaire, Vocabulaire, Nombres, Mesures et Problèmes : encore les mêmes fiches
+for (const id of ['grammaire', 'vocabulaire', 'nombres', 'mesures', 'problemes']) ATELIERS[id] = ATELIERS.culture;
 
 // Les objets des divisions sont rangés à part (## Objets), hors des niveaux
 ATELIERS.divisions.horsNiveau = (f) => 'objet' in f.champs;

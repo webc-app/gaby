@@ -1,4 +1,5 @@
-// Les ateliers « questions à 4 réponses » (Culture, Échecs, Code de la route) : même fiches, même fonctionnement.
+// Les ateliers « questions à 4 réponses » (Culture, Échecs, Code de la route, Grammaire, Vocabulaire, Nombres,
+// Mesures, Problèmes) : même fiches, même fonctionnement.
 // Un thème au hasard (à parts égales), puis une question de ce thème. Sans mauvaises réponses écrites,
 // on prend les bonnes réponses des autres questions identiques du thème (« Quelle est cette pièce ? »…).
 import C from 'virtual:contenu';

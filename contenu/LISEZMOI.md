@@ -64,7 +64,9 @@ Phrase : Ce gâteau est *délicieux*.
 **homophones.md** : chaque groupe (`### a ou à`) commence par ses mots, un par fiche (`Mot`, `Astuce`),
 puis les phrases (`Phrase` avec le trou `___`, `Bonne`). Les choix proposés sont les mots du groupe.
 
-**capitales.md** : `Pays`, `Drapeau` (l’emoji, voir plus bas), `Capitale`. L’enfant choisit parmi quatre réponses ; les mauvaises viennent d’abord des pays du même niveau.
+**capitales.md** : `Pays`, `Drapeau` (l’emoji, voir plus bas), `Capitale`, 0 à 3 `Piège` (une grande ville du pays qui n’est pas
+sa capitale : Rio de Janeiro pour le Brésil). L’enfant choisit parmi quatre réponses ; les mauvaises sont d’abord les pièges
+(deux au plus), puis les capitales des pays du même niveau.
 À partir du niveau 5, l’app demande aussi parfois le pays d’une capitale.
 
 **drapeaux.md** : `Pays`, `Drapeau` (l’emoji, voir plus bas), 0 à 3 `Ressemble` (un autre pays du fichier dont le drapeau
@@ -72,7 +74,7 @@ ressemble : Roumanie et Tchad…). Moitié des questions : le drapeau est affich
 l’autre moitié : le pays est écrit, on trouve son drapeau parmi quatre. Les pièges : d’abord les « Ressemble »,
 puis les pays du même niveau.
 
-**culture.md** : rangé par thème (`## Échecs`), puis par niveau (`### Niveau 2`).
+**culture.md** : rangé par thème (`## Histoire`, `## Sciences`…), puis par niveau (`### Niveau 2`).
 `Question`, `Bonne`, 0 à 3 `Mauvaise`, `Explication` facultative, et éventuellement :
 - `Image : pièce cavalier` (pion, tour, fou, cavalier, dame, roi),
   `Image : planète saturne` (soleil, mercure, venus, terre, lune, mars, jupiter, saturne, uranus, neptune),
@@ -86,16 +88,27 @@ Sans `Mauvaise`, l’app prend les bonnes réponses des autres fiches du thème 
 (toutes les « Quelle est cette pièce ? », tous les drapeaux du même niveau…). Il en faut au moins 3 en tout.
 - `Image : fichier lion.jpg` : un fichier image à soi (voir « Les images » plus bas).
 
-**echecs.md** et **route.md** (Code de la route) : les mêmes fiches que la culture (`Question`, `Image`, `Bonne`,
-0 à 3 `Mauvaise`, `Explication`), rangées directement par niveau (`## Niveau 2`).
+**echecs.md**, **route.md** (Code de la route), **grammaire.md**, **vocabulaire.md**, **nombres.md**, **mesures.md**
+(Mesures et géométrie) et **problemes.md** : les mêmes fiches que la culture (`Question`, `Image`, `Bonne`,
+0 à 3 `Mauvaise`, `Explication`), rangées directement par niveau (`## Niveau 2`). Une question fait 140 caractères au plus.
+Dans les problèmes, pas de prénom : un pirate, un fermier, « je ».
 
-**conjugaison.md** (Les temps, pour l’instant l’imparfait) : deux sortes de fiches.
+**Les temps** : un atelier par temps, tous au même format. **present.md**, **futur.md**, **conjugaison.md** (l’imparfait)
+et **passe-compose.md**. Deux sortes de fiches.
 - Un verbe : `Verbe` (l’infinitif), puis ses six formes `Je`, `Tu`, `Il`, `Nous`, `Vous`, `Ils` (sans le pronom :
   `Je : jouais`). `Personnes : je, tu, il` limite les personnes demandées.
-  Les choix vérifient surtout l’orthographe : la bonne forme, une forme qui se prononce pareil (faisait) et des fautes.
-  `Pièges : fesais, ferais` (facultatif) : des fautes propres au verbe, écrites à la personne « je » (elles finissent par -ais) ;
-  l’app les décline aux autres personnes et ajoute seule des terminaisons fausses (faisai, faisé…).
+  Les choix vérifient surtout l’orthographe : la bonne forme, une forme qui se prononce pareil (faisait) et des fautes
+  que l’app fabrique seule (faisai, jouont, a jouer, est joué…).
 - Une phrase : `Phrase` (avec le trou `___`), `Verbe` (un verbe qui a sa fiche dans le fichier) et `Bonne`.
+
+`Pièges` (facultatif) ajoute des fautes propres au verbe :
+- à l’imparfait et au futur, on les écrit à la personne « je » (`Pièges : fesais, ferais` ; au futur `Pièges : voirai`) :
+  l’app les décline aux autres personnes ;
+- au passé composé, ce sont des participes faux, sans l’auxiliaire (`Pièges : prit, prendu`) ;
+- au présent, il n’y en a pas.
+
+Au passé composé, chaque forme s’écrit en deux mots (`Je : ai joué`). Avec être, on écrit le participe au masculin
+(`Il : est allé`, `Ils : sont allés`) : l’app dit alors toujours « Il » et « Ils », jamais « Elle ».
 
 **anglais.md** : deux sortes de fiches.
 - Un mot : `Image` (un emoji, un nombre, un mot français, ou `fichier lion.jpg`), `Anglais`, `Français` facultatif.
@@ -135,14 +148,15 @@ Exactement 3 questions. L’histoire ne rapporte que si les 3 réponses sont jus
 **Les ateliers calculés** (l’app fabrique les questions, on règle seulement chaque niveau) :
 - **tables.md** : `Tables : 2, 5, 10` (ou `2 à 9`), `Réponses proches : oui` (des mauvaises réponses très proches),
   `À l’envers : 30 %` (part de questions « 6 × ? = 42 »).
-- **divisions.md** : `Exercice` (partager, paquets, famille ou calcul), `Diviseurs : 2, 3`, `Résultat max : 5`.
+- **divisions.md** : `Exercice` (partager, paquets, famille, calcul, ou reste : « 17 ÷ 5 », 3 reste 2), `Diviseurs : 2, 3`, `Résultat max : 5`.
   Plusieurs fiches dans un niveau : l’app alterne entre elles.
   Sous `## Objets`, les dessins des exercices « partager » et « paquets » : `Objet : 🍎`, `Pour : 🐴`, `Nom : chevaux`.
-- **heure.md** : `Heures : 7 à 11` (de 0 à 23), `Minutes : 0, 30` ou `0 à 55 de 5 en 5`.
+- **heure.md** : `Heures : 7 à 11` (de 6 à 23), `Minutes : 0, 30`, `0 à 55 de 5 en 5`, ou `0 à 59` (à la minute près).
 - **calcul.md** : `Exercices :` une liste parmi petites additions, petites soustractions (jusqu’à 20), compléments à 10,
   avec des dizaines (34 + 20, 60 − 30), doubles et moitiés, additions à retenue, soustractions à retenue (deux chiffres),
   compléments à 100 en dizaines, compléments à 100, suites (3 + 6 + 7 + 4), ajouter 9 ou 11, × 10, × 1000,
-  compléments à 1000, tables de 2 à 5, tables. L’enfant choisit la réponse parmi quatre.
+  compléments à 1000, tables de 2 à 5, tables, fractions (moitié, tiers, quart d’un nombre), décimaux (2,5 + 1,8),
+  × 10 avec des décimaux (3,5 × 10, 42 ÷ 10). L’enfant choisit la réponse parmi quatre.
 
 ## Les voix
 
@@ -180,6 +194,13 @@ Les images sont copiées dans l’app au moment du build ; seules celles utilis�
 ## Le ton
 
 - Pour des enfants du CE1 au CM2 : des phrases courtes, des mots qu’ils connaissent.
+- Seulement des faits : chaque réponse doit être vérifiable dans une source (une date, un nombre, un nom, une règle écrite),
+  avec une seule bonne réponse que personne ne peut discuter. Gaby est neutre.
+- Pas d’éducation civique, de religion, de politique, de savoir-vivre ni de jugement de valeur : cela s’apprend à l’école,
+  et dépend de l’école. Pas non plus de question qui demande un avis (« le plus fort », « le plus utile », « à quoi sert… »).
+- Une seule lecture possible, mais sans alourdir : on ajoute juste le mot qui lève le doute.
+  « Il en trouve 3 autres » (et pas « il en trouve 3 »), « 2 livres à 7 euros chacun » (et pas « 2 livres à 7 euros »).
+- En lecture, la réponse est écrite dans le texte : on ne demande pas ce que pense ou ressent un personnage.
 - Des mauvaises réponses plausibles, mais jamais un piège injuste ni deux réponses défendables.
 - Des réponses courtes : 45 caractères au plus (la vérification le contrôle), idéalement bien moins.
 - Pas de prénom réel, pas de marque, rien qui fasse peur aux plus jeunes.

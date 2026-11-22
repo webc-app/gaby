@@ -113,6 +113,72 @@ Mauvaise : claire
 Mauvaise : verte
 Mauvaise : petite
 
+Phrase : Le chiot est tout *petit*.
+Bonne : minuscule
+Mauvaise : géant
+Mauvaise : vieux
+Mauvaise : sage
+
+Phrase : Ma sœur est *triste* ce matin.
+Bonne : malheureuse
+Mauvaise : joyeuse
+Mauvaise : pressée
+Mauvaise : polie
+
+Phrase : Ce dessin est très *joli*.
+Bonne : beau
+Mauvaise : laid
+Mauvaise : grand
+Mauvaise : sale
+
+Phrase : Cet exercice est *difficile*.
+Bonne : dur
+Mauvaise : simple
+Mauvaise : court
+Mauvaise : amusant
+
+Phrase : Le singe est *malin*.
+Bonne : rusé
+Mauvaise : bête
+Mauvaise : lent
+Mauvaise : triste
+
+Phrase : Mon sac est *lourd*.
+Bonne : pesant
+Mauvaise : léger
+Mauvaise : vide
+Mauvaise : neuf
+
+Phrase : Le clown est *rigolo*.
+Bonne : drôle
+Mauvaise : sérieux
+Mauvaise : triste
+Mauvaise : fatigué
+
+Phrase : Ce chemin est *dangereux*.
+Bonne : risqué
+Mauvaise : sûr
+Mauvaise : long
+Mauvaise : joli
+
+Phrase : Ton histoire est *vraie*.
+Bonne : exacte
+Mauvaise : fausse
+Mauvaise : longue
+Mauvaise : triste
+
+Phrase : Le chat est *peureux*.
+Bonne : craintif
+Mauvaise : brave
+Mauvaise : joueur
+Mauvaise : gourmand
+
+Phrase : Cette tour est très *haute*.
+Bonne : élevée
+Mauvaise : basse
+Mauvaise : large
+Mauvaise : vieille
+
 ## Niveau 2 · Verbes
 
 Phrase : Le magicien *affirme* qu’il va réussir.
@@ -229,6 +295,72 @@ Mauvaise : perdu
 Mauvaise : couru
 Mauvaise : regardé
 
+Phrase : Il *ferme* la porte à clé.
+Bonne : verrouille
+Mauvaise : ouvre
+Mauvaise : peint
+Mauvaise : casse
+
+Phrase : Elle *termine* son dessin.
+Bonne : achève
+Mauvaise : commence
+Mauvaise : déchire
+Mauvaise : cache
+
+Phrase : Le chien *saute* par-dessus la barrière.
+Bonne : bondit
+Mauvaise : rampe
+Mauvaise : dort
+Mauvaise : creuse
+
+Phrase : Nous *fabriquons* une cabane.
+Bonne : construisons
+Mauvaise : détruisons
+Mauvaise : vendons
+Mauvaise : cherchons
+
+Phrase : Tu *choisis* un livre.
+Bonne : sélectionnes
+Mauvaise : rends
+Mauvaise : déchires
+Mauvaise : oublies
+
+Phrase : Je *mets* mon manteau.
+Bonne : enfile
+Mauvaise : enlève
+Mauvaise : perds
+Mauvaise : lave
+
+Phrase : Le vent *casse* une branche.
+Bonne : brise
+Mauvaise : porte
+Mauvaise : plante
+Mauvaise : arrose
+
+Phrase : Il *se dépêche* pour ne pas rater le bus.
+Bonne : se presse
+Mauvaise : se repose
+Mauvaise : se cache
+Mauvaise : se trompe
+
+Phrase : Les enfants *rient* très fort.
+Bonne : rigolent
+Mauvaise : pleurent
+Mauvaise : chantent
+Mauvaise : dorment
+
+Phrase : Elle *garde* ses billes dans une boîte.
+Bonne : conserve
+Mauvaise : jette
+Mauvaise : prête
+Mauvaise : compte
+
+Phrase : Le pirate *vole* un trésor.
+Bonne : dérobe
+Mauvaise : cache
+Mauvaise : offre
+Mauvaise : enterre
+
 ## Niveau 3 · Noms
 
 Phrase : Le *bateau* entre dans le port.
@@ -320,6 +452,78 @@ Bonne : hameau
 Mauvaise : pays
 Mauvaise : continent
 Mauvaise : immeuble
+
+Phrase : Elle porte un joli *habit*.
+Bonne : vêtement
+Mauvaise : bijou
+Mauvaise : panier
+Mauvaise : livre
+
+Phrase : Mon *copain* habite à côté.
+Bonne : ami
+Mauvaise : frère
+Mauvaise : maître
+Mauvaise : chien
+
+Phrase : Il a fait une grosse *bêtise*.
+Bonne : sottise
+Mauvaise : sieste
+Mauvaise : tarte
+Mauvaise : bosse
+
+Phrase : Le chevalier a une grande *force*.
+Bonne : puissance
+Mauvaise : peur
+Mauvaise : épée
+Mauvaise : taille
+
+Phrase : C’est le *début* de l’histoire.
+Bonne : commencement
+Mauvaise : milieu
+Mauvaise : titre
+Mauvaise : héros
+
+Phrase : La *voiture* est garée devant la maison.
+Bonne : auto
+Mauvaise : moto
+Mauvaise : roue
+Mauvaise : rue
+
+Phrase : Ce *magasin* vend des jouets.
+Bonne : commerce
+Mauvaise : camion
+Mauvaise : jardin
+Mauvaise : cahier
+
+Phrase : Ce *gamin* joue dans la cour.
+Bonne : enfant
+Mauvaise : maître
+Mauvaise : ballon
+Mauvaise : chien
+
+Phrase : Il y a un *danger* sur la route.
+Bonne : risque
+Mauvaise : panneau
+Mauvaise : virage
+Mauvaise : camion
+
+Phrase : J’ai fait un *rêve* étrange.
+Bonne : songe
+Mauvaise : dessin
+Mauvaise : voyage
+Mauvaise : bruit
+
+Phrase : Le roi vit dans un *palais*.
+Bonne : château
+Mauvaise : village
+Mauvaise : jardin
+Mauvaise : bateau
+
+Phrase : Il a de la boue sur le *visage*.
+Bonne : figure
+Mauvaise : manteau
+Mauvaise : genou
+Mauvaise : vélo
 
 ## Niveau 4 · Le sens dépend de la phrase
 
@@ -413,6 +617,66 @@ Mauvaise : crème glacée
 Mauvaise : neige
 Mauvaise : fenêtre
 
+Phrase : Ce pain est trop *dur*.
+Bonne : sec
+Mauvaise : difficile
+Mauvaise : sévère
+Mauvaise : lourd
+
+Phrase : Cet exercice est vraiment *dur*.
+Bonne : difficile
+Mauvaise : sec
+Mauvaise : solide
+Mauvaise : lourd
+
+Phrase : La nuit *tombe* déjà.
+Bonne : arrive
+Mauvaise : chute
+Mauvaise : glisse
+Mauvaise : casse
+
+Phrase : Il *tombe* de son vélo.
+Bonne : chute
+Mauvaise : arrive
+Mauvaise : roule
+Mauvaise : freine
+
+Phrase : Il est *curieux* de tout.
+Bonne : intéressé
+Mauvaise : étrange
+Mauvaise : bizarre
+Mauvaise : fatigué
+
+Phrase : Quel *curieux* animal !
+Bonne : étrange
+Mauvaise : intéressé
+Mauvaise : bavard
+Mauvaise : gentil
+
+Phrase : Ce pull est très *doux*.
+Bonne : moelleux
+Mauvaise : gentil
+Mauvaise : sucré
+Mauvaise : calme
+
+Phrase : Mon chien est très *doux*.
+Bonne : gentil
+Mauvaise : moelleux
+Mauvaise : sucré
+Mauvaise : lisse
+
+Phrase : Quelle *drôle* d’idée !
+Bonne : étrange
+Mauvaise : triste
+Mauvaise : petite
+Mauvaise : vieille
+
+Phrase : Il faut respecter la *règle* du jeu.
+Bonne : consigne
+Mauvaise : mesure
+Mauvaise : ligne
+Mauvaise : pièce
+
 ## Niveau 5 · Mots plus riches
 
 Phrase : Le guerrier était *téméraire*.
@@ -504,3 +768,75 @@ Bonne : gronde
 Mauvaise : aboie de joie
 Mauvaise : dort
 Mauvaise : remue
+
+Phrase : L’ogre était *cruel*.
+Bonne : impitoyable
+Mauvaise : tendre
+Mauvaise : maladroit
+Mauvaise : peureux
+
+Phrase : Elle est *ravie* de son cadeau.
+Bonne : enchantée
+Mauvaise : déçue
+Mauvaise : fâchée
+Mauvaise : inquiète
+
+Phrase : Ce sentier est *périlleux*.
+Bonne : dangereux
+Mauvaise : tranquille
+Mauvaise : étroit
+Mauvaise : long
+
+Phrase : Il a *contemplé* le coucher du soleil.
+Bonne : admiré
+Mauvaise : oublié
+Mauvaise : dessiné
+Mauvaise : raté
+
+Phrase : Le voleur s’est *dissimulé* derrière un arbre.
+Bonne : caché
+Mauvaise : montré
+Mauvaise : endormi
+Mauvaise : blessé
+
+Phrase : Ce problème est *complexe*.
+Bonne : compliqué
+Mauvaise : simple
+Mauvaise : court
+Mauvaise : amusant
+
+Phrase : La princesse était *vêtue* de bleu.
+Bonne : habillée
+Mauvaise : coiffée
+Mauvaise : maquillée
+Mauvaise : entourée
+
+Phrase : Le chien est *fidèle* à son maître.
+Bonne : loyal
+Mauvaise : méchant
+Mauvaise : sourd
+Mauvaise : étranger
+
+Phrase : Elle a *bâti* une cabane dans l’arbre.
+Bonne : construit
+Mauvaise : démoli
+Mauvaise : acheté
+Mauvaise : repeint
+
+Phrase : Le vent est *violent* ce soir.
+Bonne : puissant
+Mauvaise : léger
+Mauvaise : tiède
+Mauvaise : absent
+
+Phrase : Il est *célèbre* dans le monde entier.
+Bonne : connu
+Mauvaise : inconnu
+Mauvaise : seul
+Mauvaise : perdu
+
+Phrase : Sa réponse est *exacte*.
+Bonne : juste
+Mauvaise : fausse
+Mauvaise : longue
+Mauvaise : drôle

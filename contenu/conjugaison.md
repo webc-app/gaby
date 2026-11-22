@@ -1,4 +1,4 @@
-# Les temps
+# L’imparfait
 L’imparfait des verbes courants.
 
 > Une fiche par verbe : son infinitif (Verbe) et ses six formes (Je, Tu, Il, Nous, Vous, Ils).
@@ -8,7 +8,7 @@ L’imparfait des verbes courants.
 > « Pièges : fesais, ferais » ajoute des fautes propres au verbe : on les écrit à la personne « je » (elles finissent
 > par -ais), l’app les décline aux autres personnes (fesait, fesions…).
 > Une phrase : Phrase (avec le trou ___), Verbe (l’infinitif, déjà présent dans le fichier) et Bonne (la forme attendue).
-> Plus tard, d’autres temps (présent, futur, passé composé) pourront s’ajouter dans d’autres fichiers.
+> Les autres temps ont le même format, chacun dans son fichier : present.md, futur.md, passe-compose.md.
 
 ## Niveau 1 · Verbes en -er, au singulier
 

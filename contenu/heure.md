@@ -1,7 +1,7 @@
 # L’heure
 Lire l’horloge et l’écrire en chiffres.
 
-> Heures : de 0 à 23 (« 13 à 17 » pour l’après-midi). Minutes : « 0, 30 », ou « 0 à 55 de 5 en 5 ».
+> Heures : de 6 à 23 (« 13 à 17 » pour l’après-midi). Minutes : « 0, 30 », « 0 à 55 de 5 en 5 », ou « 0 à 59 » (à la minute près).
 
 ## Niveau 1 · Heures pile et demies, le matin
 Heures : 7 à 11
@@ -22,3 +22,7 @@ Minutes : 0, 15, 30, 45
 ## Niveau 5 · De 5 en 5 minutes
 Heures : 6 à 23
 Minutes : 0 à 55 de 5 en 5
+
+## Niveau 6 · À la minute près
+Heures : 6 à 23
+Minutes : 0 à 59

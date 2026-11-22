@@ -91,7 +91,7 @@ Anglais : nine
 Image : 10
 Anglais : ten
 
-## Niveau 2 · Animaux et nourriture
+## Niveau 2 · Animaux, nourriture, jouets et transports
 
 ### Animaux
 
@@ -229,7 +229,57 @@ Image : 🍊
 Anglais : orange
 Français : orange
 
-## Niveau 3 · Se présenter, le corps, les vêtements
+### Jouets et transports
+
+Image : ⚽
+Anglais : ball
+Français : ballon
+
+Image : 🚲
+Anglais : bike
+Français : vélo
+
+Image : 🧸
+Anglais : teddy bear
+Français : ours en peluche
+
+Image : 🪁
+Anglais : kite
+Français : cerf-volant
+
+Image : 🤖
+Anglais : robot
+Français : robot
+
+Image : 🚗
+Anglais : car
+Français : voiture
+
+Image : 🚂
+Anglais : train
+Français : train
+
+Image : ✈️
+Anglais : plane
+Français : avion
+
+Image : ⛵
+Anglais : boat
+Français : bateau
+
+Image : 🚌
+Anglais : bus
+Français : bus
+
+Image : 🥁
+Anglais : drum
+Français : tambour
+
+Image : 🎸
+Anglais : guitar
+Français : guitare
+
+## Niveau 3 · Se présenter, le corps, les vêtements, la maison, les sentiments, en classe
 
 ### Le corps
 
@@ -315,6 +365,125 @@ Image : 🩳
 Anglais : shorts
 Français : short
 
+### La maison
+
+Image : 🏠
+Anglais : house
+Français : maison
+
+Image : 🛏️
+Anglais : bed
+Français : lit
+
+Image : 🚪
+Anglais : door
+Français : porte
+
+Image : 🪟
+Anglais : window
+Français : fenêtre
+
+Image : 🔑
+Anglais : key
+Français : clé
+
+Image : 🕰️
+Anglais : clock
+Français : horloge
+
+Image : 🛋️
+Anglais : sofa
+Français : canapé
+
+Image : 🛁
+Anglais : bath
+Français : baignoire
+
+Image : cuisine
+Anglais : kitchen
+
+Image : chambre
+Anglais : bedroom
+
+Image : jardin
+Anglais : garden
+
+### Sentiments
+
+Image : 😀
+Anglais : happy
+Français : content
+
+Image : 😢
+Anglais : sad
+Français : triste
+
+Image : 😠
+Anglais : angry
+Français : en colère
+
+Image : 😴
+Anglais : tired
+Français : fatigué
+
+Image : 😱
+Anglais : scared
+Français : effrayé
+
+Image : 😮
+Anglais : surprised
+Français : surpris
+
+Image : 🤒
+Anglais : sick
+Français : malade
+
+Image : 🥶
+Anglais : cold
+Français : froid
+
+Image : 🥵
+Anglais : hot
+Français : chaud
+
+Image : affamé
+Anglais : hungry
+
+Image : assoiffé
+Anglais : thirsty
+
+### En classe
+
+Image : assieds-toi
+Anglais : Sit down.
+
+Image : lève-toi
+Anglais : Stand up.
+
+Image : écoute
+Anglais : Listen.
+
+Image : regarde
+Anglais : Look.
+
+Image : silence
+Anglais : Be quiet.
+
+Image : ouvre ton livre
+Anglais : Open your book.
+
+Image : ferme la porte
+Anglais : Close the door.
+
+Image : viens ici
+Anglais : Come here.
+
+Image : lève la main
+Anglais : Put your hand up.
+
+Image : répète
+Anglais : Repeat.
+
 ### Dialogues
 
 Question : Hello! What’s your name?
@@ -380,7 +549,49 @@ Mauvaise : It’s green.
 Mauvaise : My name is Tom.
 Sens : Merci !
 
-## Niveau 4 · Famille, jours, météo, école
+Question : What’s this?
+Bonne : It’s a pencil.
+Mauvaise : I’m nine.
+Mauvaise : Yes, I do.
+Mauvaise : On Monday.
+Sens : Qu’est-ce que c’est ?
+
+Question : How many apples?
+Bonne : Three apples.
+Mauvaise : It’s green.
+Mauvaise : I’m fine.
+Mauvaise : My name is Tom.
+Sens : Combien de pommes ?
+
+Question : Is it a dog?
+Bonne : No, it’s a cat.
+Mauvaise : I’m eight.
+Mauvaise : It’s Monday.
+Mauvaise : Thank you.
+Sens : Est-ce que c’est un chien ?
+
+Question : What’s your favourite animal?
+Bonne : I like horses.
+Mauvaise : I’m nine.
+Mauvaise : It’s yellow.
+Mauvaise : On Sunday.
+Sens : Quel est ton animal préféré ?
+
+Question : Who is she?
+Bonne : She’s my sister.
+Mauvaise : It’s a book.
+Mauvaise : I’m fine.
+Mauvaise : It’s purple.
+Sens : Qui est-ce ? (une fille)
+
+Question : Do you like cats?
+Bonne : Yes, I do.
+Mauvaise : I’m nine.
+Mauvaise : It’s a dog.
+Mauvaise : In London.
+Sens : Tu aimes les chats ?
+
+## Niveau 4 · Famille, jours, mois, saisons, météo, école, sports, verbes
 
 ### Famille
 
@@ -527,7 +738,261 @@ Anglais : eighty
 Image : 100
 Anglais : one hundred
 
-## Niveau 5 · Petits dialogues
+### Mois
+
+Image : janvier
+Anglais : January
+
+Image : février
+Anglais : February
+
+Image : mars
+Anglais : March
+
+Image : avril
+Anglais : April
+
+Image : mai
+Anglais : May
+
+Image : juin
+Anglais : June
+
+Image : juillet
+Anglais : July
+
+Image : août
+Anglais : August
+
+Image : septembre
+Anglais : September
+
+Image : octobre
+Anglais : October
+
+Image : novembre
+Anglais : November
+
+Image : décembre
+Anglais : December
+
+### Saisons
+
+Image : printemps
+Anglais : spring
+
+Image : été
+Anglais : summer
+
+Image : automne
+Anglais : autumn
+
+Image : hiver
+Anglais : winter
+
+### Sports
+
+Image : ⚽
+Anglais : football
+Français : football
+
+Image : 🎾
+Anglais : tennis
+Français : tennis
+
+Image : 🏊
+Anglais : swimming
+Français : natation
+
+Image : 🏀
+Anglais : basketball
+Français : basket
+
+Image : 🏉
+Anglais : rugby
+Français : rugby
+
+Image : ⛷️
+Anglais : skiing
+Français : ski
+
+Image : 🏃
+Anglais : running
+Français : course à pied
+
+Image : 💃
+Anglais : dancing
+Français : danse
+
+Image : 🚴
+Anglais : cycling
+Français : vélo
+
+Image : 🥋
+Anglais : judo
+Français : judo
+
+Image : 🏇
+Anglais : horse riding
+Français : équitation
+
+### Verbes
+
+Image : manger
+Anglais : eat
+
+Image : boire
+Anglais : drink
+
+Image : dormir
+Anglais : sleep
+
+Image : courir
+Anglais : run
+
+Image : sauter
+Anglais : jump
+
+Image : lire
+Anglais : read
+
+Image : écrire
+Anglais : write
+
+Image : chanter
+Anglais : sing
+
+Image : jouer
+Anglais : play
+
+Image : nager
+Anglais : swim
+
+Image : marcher
+Anglais : walk
+
+Image : dessiner
+Anglais : draw
+
+### Dialogues
+
+Question : What’s your favourite sport?
+Bonne : I like football.
+Mauvaise : I’m eleven.
+Mauvaise : It’s rainy.
+Mauvaise : She’s my mum.
+Sens : Quel est ton sport préféré ?
+
+Question : What are you wearing?
+Bonne : I’m wearing a blue T-shirt.
+Mauvaise : I’m eating an apple.
+Mauvaise : It’s on the table.
+Mauvaise : I’ve got a dog.
+Sens : Qu’est-ce que tu portes ?
+
+Question : Where is my pencil?
+Bonne : It’s under the chair.
+Mauvaise : It’s Tuesday.
+Mauvaise : It’s cloudy.
+Mauvaise : I’m ten.
+Sens : Où est mon crayon ?
+
+Question : What’s your favourite day?
+Bonne : My favourite day is Saturday.
+Mauvaise : My favourite colour is red.
+Mauvaise : It’s windy.
+Mauvaise : I’m twelve.
+Sens : Quel est ton jour préféré ?
+
+Question : How many brothers have you got?
+Bonne : I’ve got two brothers.
+Mauvaise : I’m two.
+Mauvaise : It’s two o’clock.
+Mauvaise : Two apples, please.
+Sens : Combien de frères as-tu ?
+
+Question : Is it cold today?
+Bonne : Yes, it’s snowy.
+Mauvaise : Yes, it’s sunny and hot.
+Mauvaise : No, it’s Monday.
+Mauvaise : Yes, I’m ten.
+Sens : Est-ce qu’il fait froid aujourd’hui ?
+
+## Niveau 5 · Métiers, la ville, petits dialogues
+
+### Métiers
+
+Image : docteur
+Anglais : doctor
+
+Image : pompier
+Anglais : firefighter
+
+Image : policier
+Anglais : police officer
+
+Image : fermier
+Anglais : farmer
+
+Image : cuisinier
+Anglais : cook
+
+Image : boulanger
+Anglais : baker
+
+Image : infirmier
+Anglais : nurse
+
+Image : pilote
+Anglais : pilot
+
+Image : chanteur
+Anglais : singer
+
+Image : dentiste
+Anglais : dentist
+
+Image : vétérinaire
+Anglais : vet
+
+Image : facteur
+Anglais : postman
+
+### En ville
+
+Image : magasin
+Anglais : shop
+
+Image : parc
+Anglais : park
+
+Image : rue
+Anglais : street
+
+Image : 🏥
+Anglais : hospital
+Français : hôpital
+
+Image : gare
+Anglais : station
+
+Image : pont
+Anglais : bridge
+
+Image : piscine
+Anglais : swimming pool
+
+Image : bibliothèque
+Anglais : library
+
+Image : boulangerie
+Anglais : bakery
+
+Image : ville
+Anglais : town
+
+Image : ferme
+Anglais : farm
 
 ### Dialogues
 
@@ -607,3 +1072,87 @@ Mauvaise : It’s Monday.
 Mauvaise : I’m fine.
 Mauvaise : It’s three o’clock.
 Sens : Où est le chat ?
+
+Question : What do you want to be?
+Bonne : I want to be a pilot.
+Mauvaise : I want a pizza.
+Mauvaise : I’m at school.
+Mauvaise : I like planes.
+Sens : Que veux-tu faire plus tard ?
+
+Question : What are you doing?
+Bonne : I’m reading a book.
+Mauvaise : I’m ten.
+Mauvaise : I’m fine.
+Mauvaise : I’m French.
+Sens : Qu’est-ce que tu fais ?
+
+Question : How do you go to school?
+Bonne : By bus.
+Mauvaise : At eight o’clock.
+Mauvaise : In the morning.
+Mauvaise : On Monday.
+Sens : Comment vas-tu à l’école ?
+
+Question : What time do you get up?
+Bonne : At seven o’clock.
+Mauvaise : By bike.
+Mauvaise : In my bedroom.
+Mauvaise : Seven apples.
+Sens : À quelle heure te lèves-tu ?
+
+Question : How much is it?
+Bonne : It’s two pounds.
+Mauvaise : It’s two o’clock.
+Mauvaise : I’m two.
+Mauvaise : Two brothers.
+Sens : Combien ça coûte ?
+
+Question : Where are you from?
+Bonne : I’m from France.
+Mauvaise : I’m fine.
+Mauvaise : I’m eleven.
+Mauvaise : I’m hungry.
+Sens : D’où viens-tu ?
+
+Question : What’s in your schoolbag?
+Bonne : Two books and a pen.
+Mauvaise : It’s under the table.
+Mauvaise : It’s Friday.
+Mauvaise : I’m at school.
+Sens : Qu’y a-t-il dans ton cartable ?
+
+Question : Can you ride a bike?
+Bonne : Yes, I can.
+Mauvaise : Yes, I do.
+Mauvaise : Yes, I am.
+Mauvaise : Yes, it is.
+Sens : Sais-tu faire du vélo ?
+
+Question : Are you hungry?
+Bonne : Yes, I am.
+Mauvaise : Yes, I can.
+Mauvaise : Yes, I do.
+Mauvaise : Yes, it is.
+Sens : As-tu faim ?
+
+Question : What’s your favourite season?
+Bonne : I like summer.
+Mauvaise : I like Monday.
+Mauvaise : I like football.
+Mauvaise : I like purple.
+Sens : Quelle est ta saison préférée ?
+
+Question : Would you like some cake?
+Bonne : Yes, please!
+Mauvaise : Yes, I am.
+Mauvaise : I’m ten.
+Mauvaise : It’s a cake.
+Sens : Veux-tu du gâteau ?
+
+Question : See you tomorrow!
+Bonne : Goodbye! See you!
+Mauvaise : Nice to meet you.
+Mauvaise : I’m fine, thank you.
+Mauvaise : Yes, please.
+Sens : À demain !

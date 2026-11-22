@@ -1,5 +1,6 @@
 // Capitales : choisir la capitale d'un pays parmi quatre ; à partir du niveau 5, parfois le pays d'une capitale.
-// Les mauvaises réponses viennent d'abord des pays du même niveau (la même région du monde). Contenu : contenu/capitales.md
+// Les mauvaises réponses : d'abord les grandes villes du pays qui ne sont pas sa capitale (« Piège »), puis les capitales
+// des pays du même niveau (la même région du monde). Contenu : contenu/capitales.md
 import C from 'virtual:contenu';
 import { melanger } from '../lib/progression.js';
 import { tirerFiche, auMax, sansPoint } from './outils.js';
@@ -11,7 +12,9 @@ function choixDe(fiche, champ, niveau) {
   const vus = K.pays.filter((x) => x !== fiche && x.niveau <= Math.min(niveau, K.niveaux));
   const proches = melanger(vus.filter((x) => x.niveau === fiche.niveau));
   const autres = melanger(vus.filter((x) => x.niveau !== fiche.niveau));
-  const leurres = [...new Set([...proches, ...autres].map((x) => x[champ]))].filter((x) => x !== fiche[champ]).slice(0, 3);
+  // « Quelle est sa capitale ? » : d'abord les grandes villes du pays qui trompent (« Piège » : Rio de Janeiro), deux au plus
+  const pieges = champ === 'capitale' ? melanger(fiche.pieges ?? []).slice(0, 2) : [];
+  const leurres = [...new Set([...pieges, ...[...proches, ...autres].map((x) => x[champ])])].filter((x) => x !== fiche[champ]).slice(0, 3);
   return melanger([fiche[champ], ...leurres]);
 }
 

@@ -43,7 +43,7 @@
   {:else if nom === 'piece'}
     <circle cx="12" cy="12" r="8.5" />
     <circle cx="12" cy="12" r="5" stroke-width="1.6" opacity="0.7" />
-  {:else if nom === 'conjugaison'}
+  {:else if ['conjugaison', 'present', 'futur', 'passe-compose'].includes(nom)}
     <!-- un sablier : les temps -->
     <path d="M6.5 3.5 H17.5 M6.5 20.5 H17.5 M7.5 3.5 C 7.5 9, 16.5 9, 16.5 12 C 16.5 15, 7.5 15, 7.5 20.5 M16.5 3.5 C 16.5 9, 7.5 9, 7.5 12 C 7.5 15, 16.5 15, 16.5 20.5" />
   {:else if nom === 'echecs'}
@@ -54,6 +54,21 @@
     <!-- un feu tricolore -->
     <rect x="8" y="2.8" width="8" height="18.4" rx="3" />
     <circle cx="12" cy="7.2" r="1.5" fill="currentColor" stroke="none" /><circle cx="12" cy="12" r="1.5" /><circle cx="12" cy="16.8" r="1.5" />
+  {:else if nom === 'grammaire'}
+    <!-- un mot entre crochets : on l'analyse -->
+    <path d="M8 4 H4.5 V20 H8 M16 4 H19.5 V20 H16 M9.5 12 H14.5" />
+  {:else if nom === 'vocabulaire'}
+    <text x="12" y="16.6" text-anchor="middle" font-size="13" font-weight="800" fill="currentColor" stroke="none" font-family="system-ui, sans-serif">Aa</text>
+  {:else if nom === 'nombres'}
+    <!-- un disque et son quart : les fractions -->
+    <circle cx="12" cy="12" r="8.5" />
+    <path d="M12 3.5 V12 H20.5" />
+  {:else if nom === 'mesures'}
+    <!-- une équerre -->
+    <path d="M4.5 20 V4.5 L20 20 Z M8.5 16 V13 L11.5 16 Z" />
+  {:else if nom === 'problemes'}
+    <path d="M8.5 9 C 8.5 6.6 10 5 12 5 C 14 5 15.5 6.5 15.5 8.5 C 15.5 11 12 11.5 12 14.5" />
+    <circle cx="12" cy="18.6" r="1.3" fill="currentColor" stroke="none" />
   {:else if nom === 'tresor'}
     <path d="M4 10.5 C 4 7 7.5 5 12 5 C 16.5 5 20 7 20 10.5 Z" />
     <rect x="4" y="10.5" width="16" height="9" rx="1.5" />

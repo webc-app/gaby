@@ -18,7 +18,12 @@ Toutes les questions, les mots, les histoires et les réglages des niveaux sont 
 - `src/drapeaux/` : les drapeaux du monde en SVG (`fr.svg`, nettoyés : viewBox, sans dimensions). Dans les fiches on écrit l’emoji (`Drapeau : 🇫🇷`),
   la vérification le traduit en code (`fr`) ; seuls les drapeaux utilisés partent dans l’app (`C.svgDrapeaux.fr`).
 - `src/questions/` : un fichier par atelier, qui ne fait que fabriquer des questions à partir du contenu.
-- `src/lib/progression.js` : niveaux (5 par atelier, puis « niveau max 🏆 »), tirelire (bonne réponse = gain, jamais de perte, mode chrono = gain doublé).
+  Les ateliers « question à 4 réponses » (culture, échecs, route, grammaire, vocabulaire, nombres, mesures, problèmes) passent tous par `qcm.js`.
+  Un nouvel atelier de ce genre : son fichier de 4 lignes, sa ligne dans `src/contenu/verifier.js`, `index.js` (tiroir) et son icône (`Icone.svelte`).
+- Les temps (présent, futur, imparfait, passé composé) : un atelier par temps, tous fabriqués par `src/questions/temps.js` ;
+  ce que chaque temps a de particulier (terminaisons, fautes fabriquées) est dans `src/lib/temps.js`.
+  L’imparfait garde l’identifiant `conjugaison` (la progression des joueurs y est attachée).
+- `src/lib/progression.js` : niveaux (5 par atelier, 6 pour l’heure, puis « niveau max 🏆 »), tirelire (bonne réponse = gain, jamais de perte, mode chrono = gain doublé).
   Deuxième chance (2026-11-21) : à la première erreur on réessaie ; juste au second essai = demi-gain, niveau inchangé. Pas en chrono, ni à deux choix, ni en lecture.
 - Pas d’animation, pas de cadeau à gagner ni d’objectif (retirés le 2026-11-21) : le seul retour est la tirelire en chiffres, en haut de `Jeu.svelte`.
   La toucher ouvre `Tirelire.svelte` : derniers mouvements, et « Encaisser » (tout ou partie, validé par le code parent).

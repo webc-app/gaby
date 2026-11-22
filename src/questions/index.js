@@ -11,15 +11,23 @@ import calcul from './calcul.js';
 import lecture from './lecture.js';
 import anglais from './anglais.js';
 import conjugaison from './conjugaison.js';
+import present from './present.js';
+import futur from './futur.js';
+import passeCompose from './passe-compose.js';
 import echecs from './echecs.js';
 import route from './route.js';
+import grammaire from './grammaire.js';
+import vocabulaire from './vocabulaire.js';
+import nombres from './nombres.js';
+import mesures from './mesures.js';
+import problemes from './problemes.js';
 
 // Les ateliers à toucher : maths, français et anglais.
-export const jeux = [tables, divisions, synonymes, homophones, conjugaison, heure, anglais];
+export const jeux = [tables, divisions, synonymes, homophones, present, futur, conjugaison, passeCompose, grammaire, vocabulaire, heure, anglais];
 // Les autres ateliers (même règle que tous : bonne réponse = gain, et le mode chrono possible partout).
-export const defis = [dictee, capitales, drapeaux, calcul, culture, echecs, route];
-// Aléatoire : tous les ateliers courts mélangés (ni la lecture, ni la dictée)
-export const aleatoires = [...jeux, capitales, drapeaux, calcul, culture, echecs, route];
+export const defis = [dictee, capitales, drapeaux, calcul, nombres, mesures, problemes, culture, echecs, route];
+// Aléatoire : tous les ateliers courts mélangés (ni la lecture, ni la dictée, ni les problèmes, plus longs)
+export const aleatoires = [...jeux, capitales, drapeaux, calcul, nombres, mesures, culture, echecs, route];
 // La lecture : à part, elle rapporte quand toutes les questions sont justes.
 export { lecture };
 export const matieres = [...jeux, ...defis, lecture];
@@ -29,8 +37,9 @@ export const ALEATOIRE = { id: 'aleatoire', nom: 'Aléatoire', description: 'Un 
 
 // Le tiroir des ateliers, rangés par matière comme à l'école
 export const rubriques = [
-  { titre: 'Maths', ateliers: [tables, divisions, calcul, heure] },
-  { titre: 'Français', ateliers: [dictee, conjugaison, synonymes, homophones] },
+  { titre: 'Maths', ateliers: [tables, divisions, calcul, nombres, mesures, problemes, heure] },
+  { titre: 'Français', ateliers: [dictee, grammaire, vocabulaire, synonymes, homophones] },
+  { titre: 'Conjugaison', ateliers: [present, futur, conjugaison, passeCompose] },
   { titre: 'Anglais', ateliers: [anglais] },
   { titre: 'Découvertes', ateliers: [capitales, drapeaux, culture, route, echecs, lecture] },
 ];

@@ -2,8 +2,9 @@
 
 App de révision ludique du CE1 au CM2 (7 à 11 ans). Tout est en français.
 
-- **Maths** : tables, divisions, calcul mental, l'heure.
-- **Français** : dictée (lue à voix haute), conjugaison, synonymes, homophones.
+- **Maths** : tables, divisions, calcul mental, nombres, mesures et géométrie, problèmes, l'heure.
+- **Français** : dictée (lue à voix haute), grammaire, vocabulaire, synonymes, homophones, et la conjugaison
+  (présent, futur, imparfait, passé composé).
 - **Anglais** : vocabulaire et petites phrases, lus par une voix anglaise.
 - **Découvertes** : capitales, drapeaux, culture générale, code de la route, échecs, et des fables et contes à lire.
 

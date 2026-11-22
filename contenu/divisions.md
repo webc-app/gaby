@@ -1,7 +1,8 @@
 # Divisions
 Apprendre à partager : les divisions.
 
-> Exercice : partager (avec un dessin), paquets (avec un dessin), famille (la multiplication est donnée) ou calcul.
+> Exercice : partager (avec un dessin), paquets (avec un dessin), famille (la multiplication est donnée), calcul,
+> ou reste (« 17 ÷ 5 » : 3 reste 2).
 > Diviseurs : par quoi on divise. Résultat max : le plus grand résultat possible. Plusieurs fiches dans un niveau : l’app alterne.
 > L’aide « 3 × ? = 12 » est affichée d’office aux niveaux 1 et 2, puis à la demande.
 
@@ -31,9 +32,13 @@ Diviseurs : 2, 5, 10
 Exercice : calcul
 Diviseurs : 3, 4, 6, 7
 
-## Niveau 5 · Toutes les divisions
+## Niveau 5 · Toutes les divisions, puis avec un reste
 Exercice : calcul
 Diviseurs : 2 à 9
+
+Exercice : reste
+Diviseurs : 2 à 9
+Résultat max : 9
 
 ## Objets
 
