@@ -1,0 +1,22 @@
+{
+  "name": "gaby",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "vite build",
+    "contenu": "node scripts/verifier-contenu.mjs",
+    "voix": "node scripts/voix.mjs",
+    "test": "node scripts/verifier-contenu.mjs && node scripts/tester-ateliers.mjs",
+    "preview": "vite preview",
+    "deploy:test": "sh scripts/deploy-test.sh",
+    "reset:local": "sh scripts/reset.sh local",
+    "reset:test": "sh scripts/reset.sh test"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "5.0.3",
+    "svelte": "5.28.2",
+    "vite": "6.3.5"
+  }
+}

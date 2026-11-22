@@ -1,0 +1,86 @@
+:root {
+  --fond: #0d1b3e;
+  --fond-2: #142a57;
+  --carte: #1b3570;
+  --texte: #eaf0ff; /* blanc cassé : moins d'éblouissement que le blanc pur sur le bleu nuit */
+  --doux: #b7c9f2;
+  --lumiere: #2c5aa8; /* le halo clair en haut de l'écran */
+  --vert: #5be37d;
+  --rouge: #ff5a6e;
+  --jaune: #ffd23d;
+  --orange: #ff7a3d;
+  --bleu: #3dc5ff;
+  color-scheme: dark;
+  /* Andika partout : dessinée pour les enfants qui apprennent à lire (deux graisses : normale et grasse) */
+  font-family: 'Andika', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --cursive: 'Playwrite FR Moderne', 'Andika', cursive; /* lettres attachées, comme à l'école */
+  --blanc-bouton: #f3f5fb;
+  -webkit-text-size-adjust: 100%;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: radial-gradient(ellipse at 50% 0%, var(--lumiere) 0%, var(--fond) 62%) fixed, var(--fond);
+  transition: background-color 0.6s;
+  color: var(--texte);
+  font-size: 17px;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+input { user-select: text; -webkit-user-select: text; }
+
+/* Tous les univers gardent la même palette (bleu nuit) : seul le décor change, dans Fond.svelte. */
+
+#app {
+  min-height: 100dvh;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top) + 0.75rem) 1rem calc(env(safe-area-inset-bottom) + 1rem);
+  display: flex;
+  flex-direction: column;
+}
+h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.15; }
+/* Pages à lire (réglages, tirelire) : lignes de 65 caractères au plus, comme max-w-prose */
+.page-prose { width: 100%; max-width: 65ch; margin-inline: auto; display: flex; flex-direction: column; }
+/* Une page ouverte par-dessus le jeu (réglages) : un voile sombre et flou derrière elle, qui la fait ressortir */
+.voile-page { position: fixed; inset: 0; z-index: 0; background: rgba(4, 8, 24, 0.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); cursor: pointer; }
+.page-prose.devant { position: relative; z-index: 1; }
+.page-prose.devant .carte { box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.1); }
+button { font: inherit; color: inherit; }
+
+.bouton {
+  appearance: none;
+  border: 0;
+  border-radius: 1.1rem;
+  padding: 0.9rem 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  background: var(--bleu);
+  color: #0b1f33;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+.bouton:active { transform: translateY(4px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35); }
+.bouton:disabled { opacity: 0.45; cursor: default; }
+.bouton.jaune { background: var(--jaune); color: #3a2a00; }
+.bouton.vert { background: var(--vert); color: #0b3317; }
+.bouton.discret { background: rgba(255, 255, 255, 0.12); color: var(--texte); box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3); }
+
+.retour {
+  appearance: none; border: 0; background: rgba(255, 255, 255, 0.1); color: var(--texte);
+  border-radius: 999px; padding: 0.45rem 0.9rem; font-size: 1rem; cursor: pointer;
+}
+.carte {
+  background: var(--carte);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Tablette à l'horizontale : plus large, bête à gauche et jeu à droite */
+@media (orientation: landscape) and (min-width: 700px) {
+  #app { max-width: 62rem; padding-inline: 1.5rem; }
+}

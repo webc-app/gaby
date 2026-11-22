@@ -1,0 +1,12 @@
+# Secrets et adresse du serveur : jamais dans git (le modèle à recopier est .env.exemple)
+.env
+.env.*
+!.env.exemple
+# Générés ou installés
+node_modules/
+dist/
+# Données locales de développement (profils de test)
+.data/
+# Modèle de voix Kokoro (500 Mo), retéléchargeable
+.voix/
+.DS_Store

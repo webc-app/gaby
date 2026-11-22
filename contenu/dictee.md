@@ -1,0 +1,230 @@
+# Dictée
+Écouter et écrire les mots sans faute.
+
+> Un mot ou un petit groupe de mots par ligne, précédé de « - ». Éviter les homophones (vert / verre).
+
+## Niveau 1 · Sons simples
+
+- lune
+- vélo
+- ami
+- tapis
+- moto
+- robe
+- salade
+- tomate
+- pirate
+- banane
+- domino
+- lama
+- pull
+- sac
+- lac
+- bol
+- kiwi
+- radis
+- judo
+- navire
+- tulipe
+- pyjama
+- tortue
+- limace
+- lavabo
+- kayak
+- parasol
+- cabane
+- moteur
+- valise
+
+## Niveau 2 · ou, on, an, in, oi, ch
+
+- mouton
+- maison
+- chaton
+- lapin
+- poisson
+- jardin
+- roi
+- loup
+- chanson
+- pantalon
+- bonbon
+- cochon
+- dragon
+- requin
+- sapin
+- voiture
+- poule
+- lion
+- ballon
+- chocolat
+- poussin
+- chemin
+- carton
+- citron
+- dindon
+- jambon
+- tambour
+- cousin
+- mouchoir
+- poivron
+
+## Niveau 3 · gn, ill, eu, eau, au, ph, qu
+
+- montagne
+- grenouille
+- feuille
+- bateau
+- chapeau
+- oiseau
+- fleur
+- quatre
+- musique
+- citrouille
+- soleil
+- abeille
+- bouteille
+- jaune
+- jeudi
+- cadeau
+- dauphin
+- champignon
+- photo
+- campagne
+- peigne
+- fauteuil
+- chevreuil
+- cheveu
+- fleuve
+- manteau
+- chameau
+- rideau
+- agneau
+- chaussure
+- pharaon
+- quille
+
+## Niveau 4 · Accents, lettres muettes et consonnes doubles
+
+- éléphant
+- gâteau
+- château
+- école
+- fête
+- forêt
+- flèche
+- élève
+- tête
+- fenêtre
+- frère
+- rivière
+- zèbre
+- hôpital
+- fantôme
+- sorcière
+- crêpe
+- étoile
+- araignée
+- épée
+- bâton
+- île
+- goûter
+- hérisson
+- théâtre
+- épine
+- médecin
+- chêne
+- rêve
+- lèvre
+- pêche
+- squelette
+- renard
+- lézard
+- souris
+- nez
+- dent
+- bras
+- sirop
+- petit
+- grand
+- pomme
+- carotte
+- lettre
+- terre
+- drapeau
+- escargot
+- parapluie
+- trompette
+- gorille
+- serpent
+- haricot
+- abricot
+- crapaud
+- repas
+- bonnet
+- chouette
+- assiette
+- casserole
+- sonnette
+- trottinette
+- noisette
+- gomme
+- vampire
+
+## Niveau 5 · Pluriels et féminins
+
+- des chats
+- les loups
+- deux ballons
+- trois souris
+- des oiseaux
+- des bateaux
+- les chevaux
+- mes amis
+- des dents
+- les châteaux
+- des chapeaux
+- trois pommes
+- des fleurs
+- les jeux
+- des cadeaux
+- deux fantômes
+- les sorcières
+- des étoiles
+- les lapins
+- des requins
+- des bijoux
+- des cailloux
+- des genoux
+- des hiboux
+- des journaux
+- des animaux
+- des cheveux
+- des gâteaux
+- des neveux
+- des chacals
+- une lionne
+- une chienne
+- une louve
+- une danseuse
+- une boulangère
+- une princesse
+- une voisine
+- une amie
+- une cousine
+- une championne
+- une infirmière
+- une chanteuse
+- une directrice
+- une actrice
+- une coiffeuse
+- une tigresse
+- une reine
+- une fermière
+- une ogresse
+- une magicienne
+- une gardienne
+- une musicienne
+- une skieuse
+- une nageuse
+- une ânesse

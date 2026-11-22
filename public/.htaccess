@@ -1,0 +1,13 @@
+# La page et le service worker sont toujours revérifiés : une mise en ligne se voit tout de suite.
+# Les fichiers de assets/ ont un nom qui change à chaque version : ils peuvent rester en cache longtemps.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|webmanifest)$|^sw\.js$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "^sw\.js$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
