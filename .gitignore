@@ -1,0 +1,10 @@
+# Secrets et adresse du serveur : jamais dans git (le modèle à recopier est .env.exemple)
+.env
+.env.*
+!.env.exemple
+# Générés ou installés
+node_modules/
+dist/
+# Piper et ses voix (installés par npm run voix), retéléchargeables
+.voix/
+.DS_Store

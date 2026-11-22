@@ -1,0 +1,27 @@
+{
+  "name": "gaby",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node scripts/verifier-contenu.mjs && node scripts/tester-ateliers.mjs",
+    "contenu": "node scripts/verifier-contenu.mjs",
+    "voix": "node scripts/voix.mjs",
+    "deploy": "sh scripts/deploy.sh"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "5.0.3",
+    "svelte": "5.28.2",
+    "vite": "6.3.5"
+  },
+  "description": "App de révision ludique du CE1 au CM2 : maths, français, anglais et découvertes, avec une tirelire.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webc-app/gaby.git"
+  },
+  "homepage": "https://www.gaby.webc.fr"
+}

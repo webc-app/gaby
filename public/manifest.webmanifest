@@ -1,0 +1,30 @@
+{
+  "name": "Gaby",
+  "short_name": "Gaby",
+  "description": "App de révision ludique du CE1 au CM2 : maths, français, anglais et découvertes, avec une tirelire.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0d1b3e",
+  "theme_color": "#0d1b3e",
+  "icons": [
+    {
+      "src": "icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
