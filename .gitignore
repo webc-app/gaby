@@ -8,3 +8,6 @@ dist/
 # Piper et ses voix (installés par npm run voix), retéléchargeables
 .voix/
 .DS_Store
+
+# Notes de travail locales (assistant de code), gardées hors du dépôt public
+CLAUDE.md
