@@ -19,22 +19,22 @@ function choisir(liste, etat, precedente) {
 
 // Les cinq sortes d'exercices (réglages de chaque niveau : contenu/divisions.md)
 const EXERCICES = {
-  // Partager, avec le dessin
+  // Partager : les nombres écrits (un dessin se compte mal) ; après la réponse, chacun avec sa part
   partager(r, etat, prec) {
     const [t, d, q] = choisir(faits(r.diviseurs, r.max, 2), etat, prec);
-    const { objet, receveur, noms } = D.objets[hasard(0, D.objets.length - 1)];
+    const { objet, nomObjets, receveur } = D.objets[hasard(0, D.objets.length - 1)];
     return {
-      cle: cle(t, d), dessin: [objet.repeat(t), receveur.repeat(d)],
-      texte: `${t} ${objet} pour ${d} ${noms}. Combien chacun ?`, reponse: q, candidats: [q + 1, q - 1, d, q + 2, t],
+      cle: cle(t, d), partage: Array.from({ length: d }, () => `${receveur} ${objet.repeat(q)}`),
+      texte: `${d} ${receveur} se partagent ${t} ${objet} en parts égales. Combien de ${nomObjets} chacun ?`, reponse: q, candidats: [q + 1, q - 1, d, q + 2, t],
     };
   },
-  // Faire des paquets, avec le dessin
+  // Faire des paquets : après la réponse, les paquets dessinés
   paquets(r, etat, prec) {
     const [t, d, q] = choisir(faits(r.diviseurs, r.max, 2), etat, prec);
     const { objet } = D.objets[hasard(0, D.objets.length - 1)];
     return {
-      cle: cle(t, d), dessin: [objet.repeat(t)],
-      texte: `${t} ${objet} en paquets de ${d}. Combien de paquets ?`, reponse: q, candidats: [q + 1, q - 1, d, q + 2],
+      cle: cle(t, d), partage: Array.from({ length: q }, () => objet.repeat(d)),
+      texte: `On range ${t} ${objet} en paquets de ${d}. Combien de paquets ?`, reponse: q, candidats: [q + 1, q - 1, d, q + 2],
     };
   },
   // La famille de nombres : la multiplication est donnée

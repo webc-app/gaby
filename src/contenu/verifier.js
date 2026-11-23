@@ -333,8 +333,12 @@ const ATELIERS = {
     const objets = [];
     for (const f of fiches) {
       if ('objet' in f.champs) {
-        const c = champs(f, err, { objet: 1, pour: 1, nom: 1 });
-        if (c) objets.push({ objet: c.objet, receveur: c.pour, noms: c.nom });
+        // « Objet : 🍌 bananes », « Pour : 🐒 singes » : le dessin, puis le nom au pluriel
+        const c = champs(f, err, { objet: 1, pour: 1 });
+        if (!c) continue;
+        const [objet, ...o] = c.objet.split(/\s+/), [receveur, ...r] = c.pour.split(/\s+/);
+        if (!o.length || !r.length) { err(f.ligne, 'écrire le dessin puis le nom au pluriel : « Objet : 🍌 bananes », « Pour : 🐒 singes »'); continue; }
+        objets.push({ objet, nomObjets: o.join(' '), receveur, noms: r.join(' ') });
         continue;
       }
       const c = champs(f, err, { exercice: 1, diviseurs: 1, 'resultat max': '?' });
@@ -347,7 +351,7 @@ const ATELIERS = {
       if (!(max >= 2 && max <= 20)) err(f.ligne, 'Résultat max : un nombre entre 2 et 20');
       (niveaux[f.niveau] ??= []).push({ exercice, diviseurs, max });
     }
-    if (objets.length < 3) err(1, `il faut au moins 3 fiches « Objet / Pour / Nom » (pour les dessins de partage), il y en a ${objets.length}`);
+    if (objets.length < 3) err(1, `il faut au moins 3 fiches « Objet / Pour » (pour les dessins de partage), il y en a ${objets.length}`);
     return { reglages: niveaux.slice(1), objets };
   },
 

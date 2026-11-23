@@ -191,7 +191,7 @@
       sons.bonne(Math.max(1, combo));
       if (!rattrapage && combo % 5 === 0) setTimeout(sons.combo, 120);
       phase = 'juste';
-      delai = 650;
+      delai = q.partage ? 1800 : 650; // le temps de voir le partage dessiné
     } else {
       combo = 0;
       sons.oups();
@@ -591,14 +591,6 @@
         {#if q.dessin}
           <div class="dessin">{#each q.dessin as ligne}<div>{ligne}</div>{/each}</div>
         {/if}
-        {#if q.indice}<p class="indice">💡 {q.indice}</p>{/if}
-        {#if q.aide && phase === 'question'}
-          {#if indiceVu || q.aideVisible}
-            <p class="indice">💡 {q.aide}</p>
-          {:else}
-            <button class="demande-indice" onclick={() => { sons.clic(); indiceVu = true; }}>💡 Un indice ?</button>
-          {/if}
-        {/if}
 
         {#if matiere.ecoute}
           <!-- Dictée : le mot à écouter, surligné comme le mot des synonymes ; on écrit dans la case (le champ, plus bas) -->
@@ -653,6 +645,10 @@
         {#if phase === 'faux' && q.explication}
           <p class="explication">{q.explication}</p>
         {/if}
+        {#if q.partage && phase !== 'question'}
+          <!-- Divisions : le partage dessiné après la réponse, une part (ou un paquet) par case -->
+          <div class="partage">{#each q.partage as part}<span>{part}</span>{/each}</div>
+        {/if}
 
         {#if matiere.clavier}
           <form onsubmit={valider}>
@@ -705,6 +701,15 @@
               <button class="choix-btn {etatBouton(c)}" class:carte-choix={imageDe(c)} disabled={phase !== 'question' || c === rate} onclick={() => repondre(c)}>{#if imageDe(c)}<img class="image-choix" class:drapeau-choix={c.startsWith('drap:')} src={imageDe(c)} alt="" />{:else}{c}{/if}</button>
             {/each}
           </div>
+        {/if}
+        <!-- L'aide (divisions : « 3 × ? = 12 », ou la multiplication donnée), sous les réponses : on lit d'abord la question -->
+        {#if q.indice && phase === 'question'}<p class="indice">💡 {q.indice}</p>{/if}
+        {#if q.aide && phase === 'question'}
+          {#if indiceVu || q.aideVisible}
+            <p class="indice">💡 {q.aide}</p>
+          {:else}
+            <button class="demande-indice" onclick={() => { sons.clic(); indiceVu = true; }}>💡 Un indice ?</button>
+          {/if}
         {/if}
       </div>
     {/if}
@@ -984,6 +989,8 @@
     padding: 0 1.3rem; border-radius: 1.1rem; box-shadow: 0 5px 0 rgba(0, 0, 0, 0.35);
   }
   .ok:disabled { opacity: 0.45; }
+  .partage { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; font-size: 1.5rem; line-height: 1.3; }
+  .partage span { padding: 0.2rem 0.55rem; border-radius: 0.8rem; background: rgba(255, 255, 255, 0.1); white-space: nowrap; }
   .accents { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.35rem; margin-top: 0.7rem; }
   .accent {
     appearance: none; border: 0; cursor: pointer; font: inherit; font-size: 1.3rem; font-weight: 700; min-width: 2.4rem; height: 2.6rem;

@@ -1,7 +1,7 @@
 # Divisions
 Apprendre à partager : les divisions.
 
-> Exercice : partager (avec un dessin), paquets (avec un dessin), famille (la multiplication est donnée), calcul,
+> Exercice : partager, paquets (le partage est dessiné après la réponse), famille (la multiplication est donnée), calcul,
 > ou reste (« 17 ÷ 5 » : 3 reste 2).
 > Diviseurs : par quoi on divise. Résultat max : le plus grand résultat possible. Plusieurs fiches dans un niveau : l’app alterne.
 > L’aide « 3 × ? = 12 » est affichée d’office aux niveaux 1 et 2, puis à la demande.
@@ -42,64 +42,51 @@ Résultat max : 9
 
 ## Objets
 
-> Les dessins des exercices « partager » et « paquets » : l’objet à partager, qui le reçoit (Pour) et leur nom au pluriel. L’app en prend un au hasard.
+> Les exercices « partager » et « paquets » : l’objet et qui le reçoit, chacun avec son dessin puis son nom au pluriel.
+> « 2 🐒 se partagent 6 🍌 en parts égales. Combien de bananes chacun ? » ; après la réponse, le partage est dessiné.
+> L’app en prend un au hasard.
 
-Objet : 🐟
-Pour : 🦈
-Nom : requins
+Objet : 🍌 bananes
+Pour : 🐒 singes
 
-Objet : 🦴
-Pour : 🦖
-Nom : dinos
+Objet : 🐟 poissons
+Pour : 🦈 requins
 
-Objet : 🍬
-Pour : 👽
-Nom : aliens
+Objet : 🦴 os
+Pour : 🦖 dinos
 
-Objet : ⚽
-Pour : 🥅
-Nom : buts
+Objet : 🍬 bonbons
+Pour : 👽 aliens
 
-Objet : 🥚
-Pour : 🪺
-Nom : nids
+Objet : 🍪 biscuits
+Pour : 🐻 oursons
 
-Objet : 🍪
-Pour : 🐻
-Nom : oursons
+Objet : 🌰 noisettes
+Pour : 🐿️ écureuils
 
-Objet : 🌰
-Pour : 🐿️
-Nom : écureuils
+Objet : 🍎 pommes
+Pour : 🐴 chevaux
 
-Objet : 🍎
-Pour : 🐴
-Nom : chevaux
+Objet : 🎃 citrouilles
+Pour : 🧙 sorcières
 
-Objet : 🎃
-Pour : 🧙
-Nom : sorcières
+Objet : ⭐ étoiles
+Pour : 🧑‍🚀 astronautes
 
-Objet : ⭐
-Pour : 🚀
-Nom : fusées
+Objet : 🏀 ballons
+Pour : ⛹️ joueurs
 
-Objet : 🏀
-Pour : ⛹️
-Nom : joueurs
+Objet : 🥕 carottes
+Pour : 🐰 lapins
 
-Objet : 🥕
-Pour : 🐰
-Nom : lapins
+Objet : 💎 diamants
+Pour : 🏴‍☠️ pirates
 
-Objet : 🍌
-Pour : 🐒
-Nom : singes
+Objet : 🎁 cadeaux
+Pour : 🎅 lutins
 
-Objet : 💎
-Pour : 🏴‍☠️
-Nom : pirates
+Objet : 🌽 épis de maïs
+Pour : 🐔 poules
 
-Objet : 🎁
-Pour : 🎅
-Nom : lutins
+Objet : 🍯 pots de miel
+Pour : 🐝 abeilles

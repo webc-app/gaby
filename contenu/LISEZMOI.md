@@ -150,7 +150,8 @@ Exactement 3 questions. L’histoire ne rapporte que si les 3 réponses sont jus
   `À l’envers : 30 %` (part de questions « 6 × ? = 42 »).
 - **divisions.md** : `Exercice` (partager, paquets, famille, calcul, ou reste : « 17 ÷ 5 », 3 reste 2), `Diviseurs : 2, 3`, `Résultat max : 5`.
   Plusieurs fiches dans un niveau : l’app alterne entre elles.
-  Sous `## Objets`, les dessins des exercices « partager » et « paquets » : `Objet : 🍎`, `Pour : 🐴`, `Nom : chevaux`.
+  Sous `## Objets`, ce qu’on partage et qui le reçoit, chacun avec son dessin puis son nom au pluriel : `Objet : 🍌 bananes`,
+  `Pour : 🐒 singes`. L’énoncé écrit les nombres (« 2 🐒 se partagent 6 🍌 en parts égales ») ; le partage est dessiné après la réponse.
 - **heure.md** : `Heures : 7 à 11` (de 6 à 23), `Minutes : 0, 30`, `0 à 55 de 5 en 5`, ou `0 à 59` (à la minute près).
 - **calcul.md** : `Exercices :` une liste parmi petites additions, petites soustractions (jusqu’à 20), compléments à 10,
   avec des dizaines (34 + 20, 60 − 30), doubles et moitiés, additions à retenue, soustractions à retenue (deux chiffres),

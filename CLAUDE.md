@@ -30,6 +30,8 @@ Toutes les questions, les mots, les histoires et les réglages des niveaux sont 
   Dans `Parent.svelte`, les parents ajoutent ou retirent de l’argent, avec une raison. Le mot à l’écran est toujours « tirelire ».
 - La dictée, dans `Jeu.svelte` : sur écran tactile, son propre clavier AZERTY avec les accents (celui du système reste fermé : `inputmode="none"`) ;
   sur ordinateur, le vrai clavier et une rangée de lettres accentuées. Si seuls les accents sont faux, la deuxième chance dit « Presque ! Vérifie les accents. »
+- Les divisions : l’énoncé écrit les nombres (un dessin se compte mal), le partage est dessiné après la réponse (`q.partage`) ;
+  l’aide « 3 × ? = 12 » est sous les réponses, affichée d’office aux niveaux 1 et 2.
 - Les ateliers : `Tiroir.svelte`. Tablette en paysage : la liste est toujours affichée à gauche de l’exercice (`fixe`) ;
   ailleurs (portrait, téléphone), elle s’ouvre en tiroir par le bouton en haut à droite.
 - Les sons enregistrés sont appelés avec `?v=<empreinte>` (calculée dans `vite.config.js`) : un son réenregistré change toujours d’adresse,
