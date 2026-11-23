@@ -45,7 +45,7 @@ De ce que vous voyez est peut-être la cause.
 Où vous voulez ? — Pas toujours ; mais qu’importe ?
 — Il importe si bien, que de tous vos repas
 Je ne veux en aucune sorte,
-Et ne voudrais pas même à ce prix un trésor. »
+Et ne voudrais pas même à ce prix d’un trésor. »
 
 Cela dit, maître Loup s’enfuit, et court encor.
 
