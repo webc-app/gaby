@@ -239,6 +239,10 @@
     if (delai !== undefined) suite = setTimeout(nouvelleQuestion, delai);
   }
 
+  // Dictée : « legume » pour « légume » ? Seuls les accents (ou la cédille) sont faux : on le dit à la deuxième chance
+  const sansAccents = (t) => normaliser(t).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/œ/g, 'oe');
+  const memeSansAccents = (a, b) => a !== null && sansAccents(a) === sansAccents(b);
+
   // Dictée : les lettres accentuées, sous le champ
   const ACCENTS = ['é', 'è', 'ê', 'à', 'â', 'ç', 'ù', 'û', 'î', 'ô', 'œ'];
   // Sur écran tactile, la dictée a son propre clavier (AZERTY) : celui du système reste fermé
@@ -641,7 +645,7 @@
         {/if}
 
         {#if rate !== null && phase === 'question'}
-          <p class="encore">Essaie encore !</p>
+          <p class="encore">{matiere.id === 'dictee' && memeSansAccents(rate, q.reponse) ? 'Presque ! Vérifie les accents.' : 'Essaie encore !'}</p>
         {/if}
         {#if phase === 'recopie'}
           <p class="correction" class:cursive={matiere.id === 'dictee'}>{q.reponse}</p>

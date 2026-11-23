@@ -28,6 +28,8 @@ Toutes les questions, les mots, les histoires et les réglages des niveaux sont 
 - Pas d’animation, pas de cadeau à gagner ni d’objectif (retirés le 2026-11-21) : le seul retour est la tirelire en chiffres, en haut de `Jeu.svelte`.
   La toucher ouvre `Tirelire.svelte` : derniers mouvements, et « Encaisser » (tout ou partie, validé par le code parent).
   Dans `Parent.svelte`, les parents ajoutent ou retirent de l’argent, avec une raison. Le mot à l’écran est toujours « tirelire ».
+- La dictée, dans `Jeu.svelte` : sur écran tactile, son propre clavier AZERTY avec les accents (celui du système reste fermé : `inputmode="none"`) ;
+  sur ordinateur, le vrai clavier et une rangée de lettres accentuées. Si seuls les accents sont faux, la deuxième chance dit « Presque ! Vérifie les accents. »
 - Les ateliers : `Tiroir.svelte`. Tablette en paysage : la liste est toujours affichée à gauche de l’exercice (`fixe`) ;
   ailleurs (portrait, téléphone), elle s’ouvre en tiroir par le bouton en haut à droite.
 - Les sons enregistrés sont appelés avec `?v=<empreinte>` (calculée dans `vite.config.js`) : un son réenregistré change toujours d’adresse,
