@@ -164,9 +164,13 @@
     setTimeout(() => (cagnottePulse = false), 700);
   }
 
+  // Une réponse juste ; en dictée, « oe » vaut « œ » (pas de touche œ sur un clavier d'ordinateur)
+  const sansOe = (t) => (matiere.id === 'dictee' ? normaliser(t).replace(/œ/g, 'oe') : normaliser(t));
+  const memeReponse = (a, b) => sansOe(a) === sansOe(b);
+
   function repondre(valeur) {
     if (phase !== 'question' || !q) return;
-    const juste = valeur !== null && normaliser(valeur) === normaliser(q.reponse);
+    const juste = valeur !== null && memeReponse(valeur, q.reponse);
     // Deuxième chance : à la première erreur, rien n'est compté et on réessaie (au clavier, on corrige ce qu'on a écrit).
     // Pas en mode chrono, ni quand il n'y a que deux choix (le second essai serait donné).
     if (!juste && rate === null && !chrono && (matiere.clavier || q.choix?.length > 2)) {
@@ -244,8 +248,7 @@
   const sansAccents = (t) => normaliser(t).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/œ/g, 'oe');
   const memeSansAccents = (a, b) => a !== null && sansAccents(a) === sansAccents(b);
 
-  // Dictée : les lettres accentuées, sous le champ
-  const ACCENTS = ['é', 'è', 'ê', 'à', 'â', 'ç', 'ù', 'û', 'î', 'ô', 'œ'];
+  // Dictée, sur écran tactile : notre clavier écrit la lettre là où est le curseur
   // Sur écran tactile, la dictée a son propre clavier (AZERTY) : celui du système reste fermé
   const tactile = typeof matchMedia !== 'undefined' && matchMedia('(pointer: coarse)').matches;
   const CLAVIER = [
@@ -276,7 +279,7 @@
     if (!saisie.trim()) return;
     if (phase === 'question') repondre(saisie);
     else if (phase === 'recopie') {
-      if (normaliser(saisie) === normaliser(q.reponse)) {
+      if (memeReponse(saisie, q.reponse)) {
         sons.clic();
         phase = 'juste';
         suite = setTimeout(nouvelleQuestion, 600);
@@ -688,13 +691,6 @@
                   onpointerdown={(e) => e.preventDefault()} onclick={() => ajouterLettre(' ')}>espace</button>
               </div>
             </div>
-          {:else if matiere.id === 'dictee'}
-            <!-- Ordinateur : le vrai clavier, plus les lettres accentuées, difficiles à trouver -->
-            <div class="accents" aria-label="Lettres accentuées">
-              {#each ACCENTS as l}
-                <button type="button" class="accent" disabled={phase === 'juste'} onpointerdown={(e) => e.preventDefault()} onclick={() => ajouterLettre(l)}>{l}</button>
-              {/each}
-            </div>
           {/if}
         {:else}
           <div class="choix" class:emojis={q.ecoute && !/^[0-9a-zà-ÿœ -]+$/i.test(q.reponse)} class:longs={!q.ecoute && q.choix.some((c) => c.length > 16)}>
@@ -1006,13 +1002,6 @@
   .ok:disabled { opacity: 0.45; }
   .partage { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; font-size: 1.5rem; line-height: 1.3; }
   .partage span { padding: 0.2rem 0.55rem; border-radius: 0.8rem; background: rgba(255, 255, 255, 0.1); white-space: nowrap; }
-  .accents { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.35rem; margin-top: 0.7rem; }
-  .accent {
-    appearance: none; border: 0; cursor: pointer; font: inherit; font-size: 1.3rem; font-weight: 700; min-width: 2.4rem; height: 2.6rem;
-    border-radius: 0.8rem; background: rgba(255, 255, 255, 0.12); color: #fff; touch-action: manipulation;
-  }
-  .accent:active { background: rgba(255, 210, 61, 0.35); }
-  .accent:disabled { opacity: 0.4; }
   .clavier-dictee { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.8rem; user-select: none; -webkit-user-select: none; }
   .rangee { display: flex; justify-content: center; gap: 0.3rem; }
   .touche {
