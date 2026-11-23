@@ -31,7 +31,7 @@ export function etatInitial() {
       gainLecture: 50, // lecture validée : toutes les questions justes (le double si lue dans le temps en mode chrono)
     },
     profil: { pseudo: '', avatar: 'voxel-01' }, // anonyme : aucun nom réel, aucune photo
-    univers: 'espace', // 'espace' | 'prehistoire' | 'course'
+    univers: 'espace', // 'espace' | 'prehistoire' | 'course' | 'noel' | 'ocean' | 'halloween'
     lectures: {}, // lectures validées : { titre: { valide: true, t, chrono } }
     encaissements: [], // { t, montant } : ce que l'enfant a sorti de sa tirelire, validé par un parent
     matieres: {},

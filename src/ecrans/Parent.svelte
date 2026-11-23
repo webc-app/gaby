@@ -207,14 +207,8 @@
 <!-- Deux parties bien séparées : ce que l'enfant règle lui-même (sans code), puis l'espace des parents (avec le code) -->
 <div class="partie">
   <h2>Pour toi</h2>
-  <p>Ton univers, le son, ton pseudo et ton avatar, et comment marche Gaby. Pas besoin de code.</p>
+  <p>Le son, ton pseudo et ton avatar, ton univers, et comment marche Gaby. Pas besoin de code.</p>
 </div>
-
-<!-- L'univers : au choix de l'enfant, sans code -->
-<section class="carte aide">
-  <h2>Mon univers</h2>
-  <ChoixUnivers />
-</section>
 
 <!-- Les bruitages : au choix de l'enfant, sans code -->
 <section class="carte aide">
@@ -232,6 +226,12 @@
   <ChoixProfil bind:pseudo={nouveauPseudo} bind:avatar={nouvelAvatar} />
   <button class="bouton jaune large" onclick={enregistrerProfil}>Enregistrer</button>
   <button class="bouton discret large" onclick={() => { changerJoueur(); aller(); }}>Changer de joueur</button>
+</section>
+
+<!-- L'univers : au choix de l'enfant, sans code -->
+<section class="carte aide">
+  <h2>Mon univers</h2>
+  <ChoixUnivers />
 </section>
 
 <!-- Notice et légende : lisibles par tout le monde, sans code -->
