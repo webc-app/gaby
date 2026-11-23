@@ -7,7 +7,7 @@
   import { jeux, defis, aleatoires, lecture, trouverMatiere, normaliser, ALEATOIRE } from '../questions/index.js';
   import { infoMatiere, enregistrerReponse, fixerNiveau, crediter, melanger, tempsChrono, niveauMax, POINTS_NIVEAU } from '../lib/progression.js';
   import { niveauGagne, nomNiveau } from '../lib/phrases.js';
-  import { sons, basculerSon, sonActif, jouerFichier, prechargerFichier } from '../lib/sons.js';
+  import { sons, jouerFichier, prechargerFichier } from '../lib/sons.js';
   import { estTelephone } from '../lib/appareil.js';
   import Horloge from '../composants/Horloge.svelte';
   import Visuel from '../composants/Visuel.svelte';
@@ -46,7 +46,6 @@
   let fete = $state(null);
   let pieces = $state([]); // « +0,10 € » / « −0,05 € » qui s'envolent de la tirelire
   let cagnottePulse = $state(false);
-  let son = $state(sonActif());
   let indiceVu = $state(false);
   let niveauOuvert = $state(false); // flèches ‹ › pour changer de niveau
   let fermerNiveau = null;
@@ -58,9 +57,11 @@
 
   let largeur = $state(400);
   let hauteur = $state(800);
-  // Téléphone (petit côté < 600 px) : en-tête resserré (pas d'avatar ni de nom d'atelier)
+  // Téléphone : petit côté < 600 px
   const telephone = estTelephone();
   const paysage = $derived(!telephone && largeur > hauteur && largeur >= 700);
+  // Téléphone en portrait : l'en-tête sur deux lignes (avatar et tirelire, puis l'atelier en cours sur toute la largeur)
+  const deuxLignes = $derived(telephone && hauteur > largeur);
   // Téléphone en portrait : tout l'atelier tient dans l'écran, sans défiler. Les tailles suivent la hauteur disponible.
   const compact = $derived(telephone || (!paysage && largeur < 600));
   const borne = (min, v, max) => Math.round(Math.min(max, Math.max(min, v)));
@@ -449,33 +450,33 @@
 <svelte:window bind:innerWidth={largeur} bind:innerHeight={hauteur} />
 
 <div class="jeu" class:paysage>
-  <header>
+  <!-- Le son (bruitages) se règle dans les réglages, « Pour toi » : l'en-tête garde la place pour l'avatar et l'atelier -->
+  <header class:deux-lignes={deuxLignes}>
     <div class="outils">
-      <button class="rond" onclick={() => aller('parent')} aria-label="Espace parent"><Icone nom="reglages" /></button>
-      <button class="rond" onclick={() => (son = basculerSon())} aria-label="Son"><Icone nom={son ? 'son' : 'muet'} /></button>
+      <button class="rond" onclick={() => aller('parent')} aria-label="Réglages"><Icone nom="reglages" /></button>
       {#if import.meta.env.DEV}
         <button class="rond" onclick={remettreAZero} aria-label="Remise à zéro (dev)" title="Remise à zéro (dev)"><Icone nom="reset" /></button>
       {/if}
     </div>
     <div class="moi">
       <!-- L'avatar : le toucher ramène à « Qui joue ? » (un frère ou une sœur peut prendre la main) -->
-      {#if !telephone}<button class="photo" onclick={() => { sons.clic(); changerJoueur(); }} aria-label="Changer de joueur"><img src={srcAvatar(app.etat.profil.avatar)} alt="" /></button>{/if}
+      <button class="photo" onclick={() => { sons.clic(); changerJoueur(); }} aria-label="Changer de joueur"><img src={srcAvatar(app.etat.profil.avatar)} alt="" /></button>
       <!-- La tirelire : ce que l'enfant a gagné. La toucher ouvre l'écran de la tirelire (encaisser). -->
       <button class="cagnotte" class:pulse={cagnottePulse} onclick={() => aller('tirelire')} aria-label="Ma tirelire">
         <Icone nom="piece" /><span class="gagne">{euros(app.etat.tirelire.solde)}</span>
         {#each pieces as p (p.id)}<span class="piece" class:perte={p.perte}>{p.texte}</span>{/each}
       </button>
-      {#if !paysage}
+    </div>
+    {#if !paysage}
       <!-- L'atelier en cours, en haut à droite : le toucher ouvre le tiroir de tous les ateliers (à droite) -->
       <button class="bouton-atelier" style="--c:{atelierActif.couleur}" onclick={() => { sons.clic(); tiroir = true; }}
         aria-haspopup="dialog" aria-label="Ateliers (en cours : {atelierActif.nom})">
         <span class="pastille-atelier"><Icone nom={atelierActif.id} taille={20} /></span>
-        <!-- sur téléphone, pas la place pour le nom de l'atelier : le mot « Menu » dit où trouver les autres -->
-        <span class="nom-atelier">{telephone ? 'Menu' : atelierActif.nom}</span>
-        <svg class="fleche-atelier" viewBox="0 0 10 16" width="9" height="14" aria-hidden="true"><path d="M2 2 L8 8 L2 14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <span class="nom-atelier">{atelierActif.nom}</span>
+        <!-- sur toute la largeur (téléphone en portrait) : une pastille « Changer › » dit qu'on peut prendre un autre atelier -->
+        <span class:changer={deuxLignes}>{#if deuxLignes}Changer{/if}<svg class="fleche-atelier" viewBox="0 0 10 16" width="9" height="14" aria-hidden="true"><path d="M2 2 L8 8 L2 14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
       </button>
-      {/if}
-    </div>
+    {/if}
   </header>
 
   <!-- Tablette en paysage : tous les ateliers, toujours affichés à gauche (ailleurs : le tiroir, par le bouton du haut) -->
@@ -761,7 +762,8 @@
   header { position: relative; z-index: 3; }
   .zone { position: relative; z-index: 2; }
   /* Quand la place manque (tablette en portrait), c'est le nom de l'atelier qui se raccourcit */
-  .moi { flex: 1; min-width: 0; justify-content: flex-end; margin-left: 0.4rem; }
+  .moi { flex: none; margin-left: auto; }
+  header { gap: 0.5rem; }
   .cagnotte, .photo { flex: none; }
   .cagnotte { display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
   @media (max-width: 480px) {
@@ -771,6 +773,17 @@
     .outils { gap: 0.3rem; }
     .moi { gap: 0.35rem; }
   }
+  /* Téléphone en portrait : réglages à gauche, avatar et tirelire à droite ; l'atelier en cours dessous, sur toute la largeur */
+  .deux-lignes { flex-wrap: wrap; row-gap: 0.6rem; }
+  .deux-lignes .bouton-atelier { flex: 1 0 100%; margin-left: 0; padding-right: 0.25rem; }
+  .deux-lignes .nom-atelier { max-width: none; flex: 1; text-align: left; }
+  .deux-lignes .nom-atelier { font-size: 1.1rem; }
+  /* « Changer › » : une pastille dans la couleur de l'atelier, pour qu'elle se lise comme une action, pas comme une étiquette */
+  .changer {
+    flex: none; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.3rem 0.55rem 0.3rem 0.75rem; border-radius: 999px;
+    background: var(--c); color: #1a1033; font-size: 0.95rem; font-weight: 700;
+  }
+  .changer .fleche-atelier { color: inherit; margin-right: 0; }
 
   .zone { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
   /* Colonne accrochée en haut : le bouton de l'atelier ne bouge jamais, seule la carte change de hauteur vers le bas */

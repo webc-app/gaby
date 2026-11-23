@@ -6,6 +6,7 @@
   import Icone from '../composants/Icone.svelte';
   import ChoixUnivers from '../composants/ChoixUnivers.svelte';
   import Mentions from '../composants/Mentions.svelte';
+  import { sons, sonActif, basculerSon } from '../lib/sons.js';
   import { fixerNiveau, pointsFaibles, niveauMax } from '../lib/progression.js';
   import { nomNiveau } from '../lib/phrases.js';
 
@@ -174,6 +175,14 @@
     return jours === 0 ? 'aujourd’hui' : jours === 1 ? 'hier' : `il y a ${jours} jours`;
   };
 
+  // Les bruitages (sur cet appareil). La dictée et l'anglais parlent toujours : sans le son, pas d'exercice.
+  let son = $state(sonActif());
+  function choisirSon(oui) {
+    if (oui === son) return;
+    son = basculerSon();
+    sons.clic();
+  }
+
   const gagneCeMois = $derived(etat.tirelire.mois === moisCourant() ? etat.tirelire.gagneMois : 0);
   const taux = $derived(etat.stats.reponses ? Math.round((etat.stats.bonnes / etat.stats.reponses) * 100) : 0);
   const date = (ms) => new Date(ms).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
@@ -198,13 +207,23 @@
 <!-- Deux parties bien séparées : ce que l'enfant règle lui-même (sans code), puis l'espace des parents (avec le code) -->
 <div class="partie">
   <h2>Pour toi</h2>
-  <p>Ton univers, ton pseudo et ton avatar, et comment marche Gaby. Pas besoin de code.</p>
+  <p>Ton univers, le son, ton pseudo et ton avatar, et comment marche Gaby. Pas besoin de code.</p>
 </div>
 
 <!-- L'univers : au choix de l'enfant, sans code -->
 <section class="carte aide">
   <h2>Mon univers</h2>
   <ChoixUnivers />
+</section>
+
+<!-- Les bruitages : au choix de l'enfant, sans code -->
+<section class="carte aide">
+  <h2>Le son</h2>
+  <div class="choix-son">
+    <button type="button" class="tuile-son" class:choisi={son} aria-pressed={son} onclick={() => choisirSon(true)}><Icone nom="son" taille={26} /><span>Avec les bruitages</span></button>
+    <button type="button" class="tuile-son" class:choisi={!son} aria-pressed={!son} onclick={() => choisirSon(false)}><Icone nom="muet" taille={26} /><span>Sans</span></button>
+  </div>
+  <p class="note-son">La dictée et l’anglais parlent toujours.</p>
 </section>
 
 <!-- Le profil : anonyme, modifiable sans code -->
@@ -238,7 +257,7 @@
     {#each [
       ['aleatoire', 'Aléatoire : tous les ateliers courts mélangés'], ['chrono', 'Mode chrono : un temps pour répondre, gains doublés'], ...matieres.map((m) => [m.id, `${m.nom} : ${m.description}`]),
       
-      ['piece', 'Ta tirelire'], ['reglages', 'Réglages'], ['son', 'Son'],
+      ['piece', 'Ta tirelire'], ['reglages', 'Réglages'],
     ] as [icone, texte]}
       <div class="ligne-legende"><span class="icone-legende"><Icone nom={icone} taille={22} /></span><span>{texte}</span></div>
     {/each}
@@ -402,6 +421,14 @@
 <Mentions />
 
 <style>
+  .choix-son { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .tuile-son {
+    appearance: none; cursor: pointer; font: inherit; font-weight: 600; font-size: 0.95rem; color: var(--texte);
+    display: flex; flex-direction: column; align-items: center; gap: 0.25rem; padding: 0.6rem 0.3rem;
+    border: 3px solid transparent; border-radius: 1rem; background: rgba(255, 255, 255, 0.08);
+  }
+  .tuile-son.choisi { border-color: var(--jaune); }
+  .note-son { margin: 0; font-size: 0.9rem; color: var(--doux); }
   header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.9rem; }
   h1 { font-size: 1.5rem; }
   h2 { font-size: 1.1rem; margin-bottom: 0.6rem; }
