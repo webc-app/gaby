@@ -1,0 +1,30 @@
+name: Erreur dans une question
+description: Une réponse fausse ou discutable, une question ambiguë, un niveau mal choisi.
+labels: [contenu]
+body:
+  - type: input
+    id: atelier
+    attributes:
+      label: Atelier et niveau
+      placeholder: "Culture, niveau 3"
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: La question
+      description: Telle qu'elle s'affiche, avec les réponses proposées si possible.
+    validations:
+      required: true
+  - type: textarea
+    id: probleme
+    attributes:
+      label: Ce qui ne va pas
+      description: Réponse fausse, deux réponses possibles, phrase ambiguë, trop facile ou trop difficile pour ce niveau…
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source (pour un fait)
+      placeholder: "Un lien, un manuel, une encyclopédie"

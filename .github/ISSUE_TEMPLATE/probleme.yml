@@ -1,0 +1,18 @@
+name: Un problème dans l'app
+description: Quelque chose ne marche pas ou s'affiche mal.
+labels: [bug]
+body:
+  - type: textarea
+    id: quoi
+    attributes:
+      label: Ce qui se passe
+      description: Ce que vous avez fait, ce que vous attendiez, ce qui s'est passé.
+    validations:
+      required: true
+  - type: input
+    id: appareil
+    attributes:
+      label: Appareil et navigateur
+      placeholder: "iPad, Safari ; téléphone Android, Chrome…"
+    validations:
+      required: true

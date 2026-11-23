@@ -1,0 +1,15 @@
+name: Une idée
+description: Un nouvel exercice, un thème, une amélioration.
+labels: [idée]
+body:
+  - type: textarea
+    id: idee
+    attributes:
+      label: L'idée
+    validations:
+      required: true
+  - type: input
+    id: niveau
+    attributes:
+      label: Pour quelle classe ?
+      placeholder: "CE1, CM2…"
