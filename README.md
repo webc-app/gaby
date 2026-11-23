@@ -81,6 +81,11 @@ public/             les fichiers servis tels quels (sons, avatars, polices, serv
 scripts/            vérification du contenu, tests, enregistrement des voix, mise en ligne
 ```
 
+## Contribuer
+
+Signaler une erreur dans une question, proposer un exercice : voir [CONTRIBUTING.md](CONTRIBUTING.md).
+Les pistes d'amélioration en cours (voix, niveau des exercices…) sont dans [TODO.md](TODO.md).
+
 ## Licences
 
 Code sous licence [MIT](LICENSE), contenu pédagogique sous licence
