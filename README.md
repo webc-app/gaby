@@ -1,5 +1,7 @@
 # Gaby
 
+[![Vérification](https://github.com/webc-app/gaby/actions/workflows/verifier.yml/badge.svg)](https://github.com/webc-app/gaby/actions/workflows/verifier.yml)
+
 App de révision ludique du CE1 au CM2 (7 à 11 ans). Tout est en français.
 
 - **Maths** : tables, divisions, calcul mental, nombres, mesures et géométrie, problèmes, l'heure.

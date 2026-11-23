@@ -1,0 +1,24 @@
+# À chaque envoi et à chaque proposition de modification : le contenu est vérifié,
+# des centaines de questions sont fabriquées dans chaque atelier, puis l'app est construite.
+name: Vérification
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
