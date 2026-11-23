@@ -6,7 +6,7 @@ Les changements visibles, version par version. Le détail est dans l'historique 
 
 Première version publique.
 
-- **25 ateliers** du CE1 au CM2, chacun sur 5 niveaux puis un niveau max où tout est mélangé :
+- **23 ateliers** du CE1 au CM2, chacun sur 5 niveaux puis un niveau max où tout est mélangé :
   - maths : tables, divisions, calcul mental, nombres, mesures et géométrie, problèmes, l'heure ;
   - français : dictée lue à voix haute, grammaire, vocabulaire, synonymes, homophones ;
   - conjugaison : présent, futur, imparfait, passé composé ;
