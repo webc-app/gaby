@@ -2,7 +2,7 @@
   // Ma tirelire : ce que l'enfant a gagné, ses derniers mouvements, et l'encaissement.
   // Il encaisse quand il veut (tout, ou une partie) ; un parent valide sur place avec son code.
   // Les conditions (quand, pour quoi) sont celles de chaque famille.
-  import { app, sauver, euros, hacher, moisCourant, pseudo } from '../lib/etat.svelte.js';
+  import { app, sauver, euros, hacher, moisCourant, pseudo, enPoints, parUnite } from '../lib/etat.svelte.js';
   import { encaisser } from '../lib/progression.js';
   import { sons } from '../lib/sons.js';
 
@@ -13,14 +13,14 @@
 
   // Étapes : 'tirelire' → 'code' (combien, puis le code d'un parent) → 'ouvert' (encaissé)
   let etape = $state('tirelire');
-  let combien = $state(0); // en euros
+  let combien = $state(0); // en euros, ou en points
   let code = $state('');
   let erreur = $state('');
   let encaisse = $state(0);
 
   function demander() {
     sons.clic();
-    combien = t.solde / 100;
+    combien = t.solde / parUnite();
     code = '';
     erreur = '';
     etape = 'code';
@@ -28,8 +28,8 @@
 
   function valider(e) {
     e.preventDefault();
-    const voulu = Math.round(Number(combien) * 100);
-    if (!(voulu > 0) || voulu > t.solde) { sons.oups(); erreur = `Choisis un montant entre 0,01 € et ${euros(t.solde)}.`; return; }
+    const voulu = Math.round(Number(combien) * parUnite());
+    if (!(voulu > 0) || voulu > t.solde) { sons.oups(); erreur = `Choisis un montant entre ${euros(1)} et ${euros(t.solde)}.`; return; }
     if (hacher(code) !== app.etat.reglages.pinHash) {
       sons.oups();
       erreur = 'Ce n’est pas le bon code.';
@@ -67,7 +67,7 @@
     </div>
 
     {#if etape === 'tirelire'}
-      <button class="bouton vert large" disabled={t.solde <= 0} onclick={demander}>💶 Encaisser</button>
+      <button class="bouton vert large" disabled={t.solde <= 0} onclick={demander}>{enPoints() ? '⭐' : '💶'} Encaisser</button>
       <p class="petit">Papa ou maman valide avec son code.</p>
     {:else}
       <section class="carte">
@@ -75,7 +75,7 @@
           <form onsubmit={valider}>
             <label>
               <span>Combien veux-tu encaisser ?</span>
-              <span class="montant"><input bind:value={combien} type="number" min="0.01" max={t.solde / 100} step="0.01" inputmode="decimal" aria-label="Montant à encaisser" /> €</span>
+              <span class="montant"><input bind:value={combien} type="number" min={1 / parUnite()} max={t.solde / parUnite()} step={1 / parUnite()} inputmode={enPoints() ? 'numeric' : 'decimal'} aria-label="Montant à encaisser" /> {enPoints() ? 'points' : '€'}</span>
             </label>
             <label>
               <span>Papa ou maman, votre code :</span>

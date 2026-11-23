@@ -29,6 +29,7 @@ export function etatInitial() {
       gainReponse: 3, // par bonne réponse (le double en mode chrono)
       gainNiveau: 50, // nouveau niveau atteint (pour la première fois)
       gainLecture: 50, // lecture validée : toutes les questions justes (le double si lue dans le temps en mode chrono)
+      unite: 'euros', // 'euros' ou 'points', au choix des parents : 1 point = 1 centime, les montants ne changent pas
     },
     profil: { pseudo: '', avatar: 'voxel-01' }, // anonyme : aucun nom réel, aucune photo
     univers: 'espace', // 'espace' | 'prehistoire' | 'course' | 'noel' | 'ocean' | 'halloween'
@@ -215,7 +216,14 @@ export function hacher(texte) {
   return (h >>> 0).toString(16);
 }
 
+/** La tirelire compte en points plutôt qu'en euros (réglage des parents) ? */
+export const enPoints = () => app.etat?.reglages?.unite === 'points';
+/** Combien de centimes dans une unité affichée : 100 pour un euro, 1 pour un point */
+export const parUnite = () => (enPoints() ? 1 : 100);
+
+/** Un montant (stocké en centimes) tel qu'on l'affiche : « 1,23 € », ou « 123 points » */
 export function euros(centimes) {
+  if (enPoints()) return `${centimes.toLocaleString('fr-FR')} point${Math.abs(centimes) > 1 ? 's' : ''}`;
   return (centimes / 100).toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
 }
 

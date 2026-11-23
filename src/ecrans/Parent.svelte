@@ -1,5 +1,5 @@
 <script>
-  import { app, sauver, euros, hacher, moisCourant, serieJours, etatInitial, jourCle, pseudoPris, changerJoueur, supprimerJoueur, copieDeSauvegarde, sauvegardeFaite, restaurer } from '../lib/etat.svelte.js';
+  import { app, sauver, euros, enPoints, parUnite, hacher, moisCourant, serieJours, etatInitial, jourCle, pseudoPris, changerJoueur, supprimerJoueur, copieDeSauvegarde, sauvegardeFaite, restaurer } from '../lib/etat.svelte.js';
   import ChoixProfil from '../composants/ChoixProfil.svelte';
   import { idAvatar } from '../lib/avatars.js';
   import { matieres } from '../questions/index.js';
@@ -73,29 +73,37 @@
 
   function flash(texte) { note = texte; setTimeout(() => (note = ''), 2500); }
 
-  // --- Réglages en euros
+  // --- Réglages des gains, en euros ou en points (les montants sont stockés en centimes : 1 point = 1 centime)
   const champs = [
-    ['gainReponse', 'Par bonne réponse (le double en mode chrono)', 0, 1],
-    ['gainNiveau', 'Nouveau niveau atteint (la première fois)', 0, 10],
-    ['gainLecture', 'Lecture validée : toutes les réponses justes', 0, 10],
+    ['gainReponse', 'Par bonne réponse (le double en mode chrono)', 0, 100],
+    ['gainNiveau', 'Nouveau niveau atteint (la première fois)', 0, 1000],
+    ['gainLecture', 'Lecture validée : toutes les réponses justes', 0, 1000],
   ];
-  const facteur = (unite) => (unite === 'jours' || unite === 'nombre' ? 1 : 100); // les montants sont stockés en centimes
-  let reglages = $state(Object.fromEntries(champs.map(([k, , , , u]) => [k, app.etat.reglages[k] / facteur(u)])));
+  const lireReglages = () => Object.fromEntries(champs.map(([k]) => [k, app.etat.reglages[k] / parUnite()]));
+  let reglages = $state(lireReglages());
   function enregistrerReglages() {
-    for (const [k, , min, max, u] of champs) {
-      const v = Math.min(max, Math.max(min, Number(reglages[k]) || 0));
-      reglages[k] = v;
-      app.etat.reglages[k] = Math.round(v * facteur(u));
+    for (const [k, , min, max] of champs) {
+      const c = Math.min(max, Math.max(min, Math.round((Number(reglages[k]) || 0) * parUnite())));
+      app.etat.reglages[k] = c;
+      reglages[k] = c / parUnite();
     }
     sauver();
     flash('Réglages enregistrés.');
+  }
+  // Euros ou points : rien n'est converti, 1 € devient 100 points (et l'inverse)
+  function changerUnite(unite) {
+    if (app.etat.reglages.unite === unite) return;
+    app.etat.reglages.unite = unite;
+    reglages = lireReglages();
+    sauver();
+    flash(unite === 'points' ? 'La tirelire compte maintenant en points.' : 'La tirelire compte maintenant en euros.');
   }
 
   // --- Ajouter ou retirer de l'argent (un bonus, une punition…) : la ligne apparaît dans la tirelire de l'enfant
   let ajustement = $state('');
   let raison = $state('');
   function ajuster(sens) {
-    const c = Math.round(Math.abs(Number(ajustement)) * 100) * sens;
+    const c = Math.round(Math.abs(Number(ajustement)) * parUnite()) * sens;
     const reel = Math.max(-etat.tirelire.solde, c); // la tirelire ne descend jamais sous zéro
     if (!reel) return;
     app.etat.tirelire.solde += reel;
@@ -238,7 +246,7 @@
 <details class="carte aide" open>
   <summary>Comment ça marche ?</summary>
   <ul>
-    <li><span class="puce">💶</span> <span><strong>Ta tirelire</strong> : elle se remplit jour après jour, à chaque bonne réponse. Elle est en haut de l’écran ; touche-la pour voir le détail.</span></li>
+    <li><span class="puce">{enPoints() ? '⭐' : '💶'}</span> <span><strong>Ta tirelire</strong> : elle se remplit jour après jour, à chaque bonne réponse. Elle est en haut de l’écran ; touche-la pour voir le détail.</span></li>
     <li><Icone nom="piece" taille={20} /> <span><strong>Chaque bonne réponse</strong> : +{euros(etat.reglages.gainReponse)}. Une erreur ne coûte rien, jamais.</span></li>
     <li><span class="puce">2</span> <span><strong>Deuxième chance</strong> : à la première erreur, on réessaie. Juste au deuxième essai : +{euros(Math.round(etat.reglages.gainReponse / 2))}, et le niveau ne bouge pas (sauf en mode chrono).</span></li>
     <li><Icone nom="chrono" taille={20} /> <span><strong>Mode chrono</strong> : touche ⏱ dans un atelier (sauf la lecture). Tu as un temps pour répondre, et chaque bonne réponse rapporte le double.</span></li>
@@ -247,7 +255,7 @@
     <li><span class="puce">‹ ›</span> <span>Au début de chaque atelier, 7 bonnes réponses d’affilée font sauter un niveau, jusqu’à la première erreur : ton niveau se règle tout seul. Tu peux aussi toucher « <strong>Niveau</strong> » pour le changer. Les niveaux sautés ne rapportent rien.</span></li>
     <li><span class="puce">🎲</span> <span><strong>Ton pseudo</strong> : jamais ton vrai nom. Touche 🎲 pour en tirer un au hasard. Pas de compte, ni nom, ni e-mail, ni photo : tout reste sur cet appareil, rien n’est envoyé ailleurs.</span></li>
     <li><span class="puce">👥</span> <span><strong>Plusieurs enfants</strong> : chacun son joueur, sur le même appareil. Touche ton avatar en haut (ou « Changer de joueur » ici) pour passer la main.</span></li>
-    <li><span class="puce">✓</span> <span><strong>Encaisser</strong> : touche ta tirelire, puis « Encaisser ». Tu choisis combien, et papa ou maman valide avec son code. Quand et pour quoi ? C’est papa ou maman qui décide des règles de la maison. Ils peuvent aussi ajouter ou retirer de l’argent.</span></li>
+    <li><span class="puce">✓</span> <span><strong>Encaisser</strong> : touche ta tirelire, puis « Encaisser ». Tu choisis combien, et papa ou maman valide avec son code. Quand et pour quoi ? C’est papa ou maman qui décide des règles de la maison. Ils peuvent aussi ajouter ou retirer {enPoints() ? 'des points' : 'de l’argent'}.</span></li>
   </ul>
 </details>
 
@@ -267,8 +275,8 @@
 <div class="partie parents">
   <h2>Pour les parents <span aria-hidden="true">🔒</span></h2>
   <p>
-    Tout ce qui touche à l’argent est protégé par un code que l’enfant ne connaît pas : encaisser la tirelire,
-    ajouter ou retirer de l’argent, régler les gains et les niveaux, la copie de sauvegarde, remettre à zéro ou
+    Tout ce qui touche à la tirelire est protégé par un code que l’enfant ne connaît pas : encaisser la tirelire,
+    ajouter ou retirer {enPoints() ? 'des points' : 'de l’argent'}, régler les gains et les niveaux, la copie de sauvegarde, remettre à zéro ou
     supprimer un joueur. Un seul code pour tous les joueurs de cet appareil.
   </p>
 </div>
@@ -304,9 +312,9 @@
 
   <section class="carte">
     <h2>La tirelire : {euros(etat.tirelire.solde)}</h2>
-    <p class="doux">Ajouter ou retirer de l’argent, par exemple un bonus ou une punition. L’enfant voit la ligne dans sa tirelire.</p>
+    <p class="doux">Ajouter ou retirer {enPoints() ? 'des points' : 'de l’argent'}, par exemple un bonus ou une punition. L’enfant voit la ligne dans sa tirelire.</p>
     <div class="ajuster">
-      <input type="number" bind:value={ajustement} min="0" step="0.5" inputmode="decimal" placeholder="Montant en €" aria-label="Montant en euros" />
+      <input type="number" bind:value={ajustement} min="0" step={enPoints() ? 1 : 0.5} inputmode={enPoints() ? 'numeric' : 'decimal'} placeholder={enPoints() ? 'Nombre de points' : 'Montant en €'} aria-label={enPoints() ? 'Nombre de points' : 'Montant en euros'} />
       <input type="text" bind:value={raison} maxlength="40" placeholder="Pourquoi ? (facultatif)" aria-label="Raison" class="raison" />
     </div>
     <div class="ajuster">
@@ -393,11 +401,17 @@
   </section>
 
   <section class="carte">
-    <h2>Gains (en €)</h2>
-    {#each champs as [k, label, min, max, u]}
+    <h2>Gains</h2>
+    <!-- L'argent motive et apprend sa valeur ; certaines familles préfèrent des points. Les montants restent les mêmes. -->
+    <div class="unite" role="radiogroup" aria-label="La tirelire compte en">
+      <button class="bouton" class:jaune={!enPoints()} class:discret={enPoints()} role="radio" aria-checked={!enPoints()} onclick={() => changerUnite('euros')}>💶 En euros</button>
+      <button class="bouton" class:jaune={enPoints()} class:discret={!enPoints()} role="radio" aria-checked={enPoints()} onclick={() => changerUnite('points')}>⭐ En points</button>
+    </div>
+    <p class="doux petit-texte">{enPoints() ? '100 points valent 1 € : en repassant en euros, rien n’est perdu.' : 'En points, 1 € devient 100 points : rien n’est perdu.'}</p>
+    {#each champs as [k, label, min, max]}
       <label class="reglage">
-        <span>{label}</span>
-        <input type="number" bind:value={reglages[k]} min={min} max={max} step={u ? 1 : 0.01} inputmode="decimal" />
+        <span>{label} ({enPoints() ? 'points' : '€'})</span>
+        <input type="number" bind:value={reglages[k]} min={min} max={max / parUnite()} step={1 / parUnite()} inputmode={enPoints() ? 'numeric' : 'decimal'} />
       </label>
     {/each}
     <button class="bouton jaune large" onclick={enregistrerReglages}>Enregistrer</button>
@@ -421,6 +435,8 @@
 <Mentions />
 
 <style>
+  .unite { display: flex; gap: 0.6rem; }
+  .unite .bouton { flex: 1; }
   .choix-son { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
   .tuile-son {
     appearance: none; cursor: pointer; font: inherit; font-weight: 600; font-size: 0.95rem; color: var(--texte);

@@ -10,7 +10,8 @@ App de révision ludique du CE1 au CM2 (7 à 11 ans). Tout est en français.
 
 Chaque bonne réponse remplit une **tirelire** virtuelle. Une erreur ne coûte jamais rien. L'enfant encaisse quand il
 veut, avec l'accord d'un parent : chaque famille fixe ses propres règles, et les parents peuvent ajouter ou retirer de
-l'argent. Chaque atelier a 5 niveaux qui se règlent tout seuls, puis un niveau max où tout est mélangé.
+l'argent. Les familles qui préfèrent peuvent compter en points plutôt qu'en euros (réglage des parents).
+Chaque atelier a 5 niveaux qui se règlent tout seuls, puis un niveau max où tout est mélangé.
 
 ## Sans compte, sans serveur
 
