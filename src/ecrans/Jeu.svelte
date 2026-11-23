@@ -957,6 +957,8 @@
   .phrase { margin: 0.3rem 0 0; text-align: center; font-size: var(--enonce); font-weight: 400; line-height: 1.4; }
   .phrase mark, .question mark { background: var(--jaune); color: #1a1033; padding: 0.05em 0.35em; border-radius: 0.4em; font-weight: 700; }
   /* la case à remplir (homophones, temps, et le « ? » des calculs) */
+  /* le cadre jaune (le mot surligné, la case à trouver) déborde de sa ligne : un peu d'air avant ce qui suit */
+  .phrase:has(mark), .question:has(mark) { margin-bottom: 0.8rem; }
   mark.trou { background: rgba(255, 210, 61, 0.25); color: var(--jaune); border: 2px dashed var(--jaune); }
   .choix-btn {
     appearance: none; border: 0; cursor: pointer; font: inherit; font-size: var(--reponse); font-weight: 700; line-height: 1.2; padding: 0.9rem 0.4rem;
