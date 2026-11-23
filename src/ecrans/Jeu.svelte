@@ -239,6 +239,33 @@
     if (delai !== undefined) suite = setTimeout(nouvelleQuestion, delai);
   }
 
+  // Dictée : les lettres accentuées, sous le champ
+  const ACCENTS = ['é', 'è', 'ê', 'à', 'â', 'ç', 'ù', 'û', 'î', 'ô', 'œ'];
+  // Sur écran tactile, la dictée a son propre clavier (AZERTY) : celui du système reste fermé
+  const tactile = typeof matchMedia !== 'undefined' && matchMedia('(pointer: coarse)').matches;
+  const CLAVIER = [
+    ['é', 'è', 'ê', 'à', 'â', 'ù', 'û', 'î', 'ô', 'œ'],
+    ['a', 'z', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+    ['q', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm'],
+    ['w', 'x', 'c', 'v', 'b', 'n', 'ç', '’', '⌫'],
+  ];
+  async function effacerLettre() {
+    let debut = champ?.selectionStart ?? saisie.length;
+    const fin = champ?.selectionEnd ?? saisie.length;
+    if (debut === fin) debut = Math.max(0, debut - 1);
+    saisie = saisie.slice(0, debut) + saisie.slice(fin);
+    await tick();
+    champ?.focus({ preventScroll: true });
+    champ?.setSelectionRange(debut, debut);
+  }
+  async function ajouterLettre(l) {
+    const debut = champ?.selectionStart ?? saisie.length, fin = champ?.selectionEnd ?? saisie.length;
+    saisie = saisie.slice(0, debut) + l + saisie.slice(fin);
+    await tick();
+    champ?.focus({ preventScroll: true });
+    champ?.setSelectionRange(debut + l.length, debut + l.length);
+  }
+
   function valider(e) {
     e.preventDefault();
     if (!saisie.trim()) return;
@@ -629,7 +656,7 @@
               bind:this={champ}
               bind:value={saisie}
               type="text"
-              inputmode={matiere.clavier}
+              inputmode={matiere.id === 'dictee' && tactile ? 'none' : matiere.clavier}
               pattern={matiere.clavier === 'numeric' ? '[0-9]*' : undefined}
               enterkeyhint="go"
               autocomplete="off"
@@ -642,6 +669,32 @@
             />
             <button class="ok" disabled={!saisie.trim() || phase === 'juste'}>OK</button>
           </form>
+          {#if matiere.id === 'dictee' && tactile}
+            <!-- Écran tactile : notre clavier à nous (AZERTY, accents compris), à la place de celui du système,
+                 qui cache l'exercice, corrige les mots tout seul et propose des suggestions -->
+            <div class="clavier-dictee" aria-label="Clavier">
+              {#each CLAVIER as rangee, r}
+                <div class="rangee" class:rangee-accents={r === 0}>
+                  {#each rangee as l}
+                    <button type="button" class="touche" class:effacer={l === '⌫'} aria-label={l === '⌫' ? 'Effacer' : l}
+                      disabled={phase === 'juste'} onpointerdown={(e) => e.preventDefault()}
+                      onclick={() => (l === '⌫' ? effacerLettre() : ajouterLettre(l))}>{l}</button>
+                  {/each}
+                </div>
+              {/each}
+              <div class="rangee">
+                <button type="button" class="touche espace" aria-label="Espace" disabled={phase === 'juste'}
+                  onpointerdown={(e) => e.preventDefault()} onclick={() => ajouterLettre(' ')}>espace</button>
+              </div>
+            </div>
+          {:else if matiere.id === 'dictee'}
+            <!-- Ordinateur : le vrai clavier, plus les lettres accentuées, difficiles à trouver -->
+            <div class="accents" aria-label="Lettres accentuées">
+              {#each ACCENTS as l}
+                <button type="button" class="accent" disabled={phase === 'juste'} onpointerdown={(e) => e.preventDefault()} onclick={() => ajouterLettre(l)}>{l}</button>
+              {/each}
+            </div>
+          {/if}
         {:else}
           <div class="choix" class:emojis={q.ecoute && !/^[0-9a-zà-ÿœ -]+$/i.test(q.reponse)} class:longs={!q.ecoute && q.choix.some((c) => c.length > 16)}>
             {#each q.choix as c (c)}
@@ -927,6 +980,25 @@
     padding: 0 1.3rem; border-radius: 1.1rem; box-shadow: 0 5px 0 rgba(0, 0, 0, 0.35);
   }
   .ok:disabled { opacity: 0.45; }
+  .accents { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.35rem; margin-top: 0.7rem; }
+  .accent {
+    appearance: none; border: 0; cursor: pointer; font: inherit; font-size: 1.3rem; font-weight: 700; min-width: 2.4rem; height: 2.6rem;
+    border-radius: 0.8rem; background: rgba(255, 255, 255, 0.12); color: #fff; touch-action: manipulation;
+  }
+  .accent:active { background: rgba(255, 210, 61, 0.35); }
+  .accent:disabled { opacity: 0.4; }
+  .clavier-dictee { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.8rem; user-select: none; -webkit-user-select: none; }
+  .rangee { display: flex; justify-content: center; gap: 0.3rem; }
+  .touche {
+    appearance: none; border: 0; cursor: pointer; font: inherit; font-size: 1.25rem; font-weight: 700; flex: 1 1 0; max-width: 3.4rem; min-width: 0;
+    height: 2.9rem; padding: 0; border-radius: 0.6rem; background: rgba(255, 255, 255, 0.16); color: #fff; touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .rangee-accents .touche { background: rgba(255, 210, 61, 0.2); color: var(--jaune); }
+  .touche.effacer { flex-grow: 1.6; max-width: 5rem; background: rgba(255, 255, 255, 0.28); }
+  .touche.espace { flex: 0 1 60%; max-width: 20rem; font-size: 1rem; font-weight: 600; }
+  .touche:active { background: rgba(255, 210, 61, 0.45); }
+  .touche:disabled { opacity: 0.4; }
 
   .fete {
     position: fixed; left: 50%; top: 40%; translate: -50% -50%; z-index: 20; pointer-events: none;
