@@ -84,5 +84,5 @@ scripts/            vérification du contenu, tests, enregistrement des voix, mi
 ## Licences
 
 Code sous licence [MIT](LICENSE), contenu pédagogique sous licence
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr). Les images, polices et voix viennent de sources
+[CC BY 4.0](contenu/LICENCE). Les images, polices et voix viennent de sources
 libres : voir [SOURCES.md](SOURCES.md).

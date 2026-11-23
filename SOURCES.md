@@ -3,13 +3,16 @@
 Le **code** de Gaby est sous licence MIT (fichier `LICENSE`).
 Le **contenu pédagogique** écrit pour l'app (`contenu/` : questions, mots, phrases, réécritures des contes) est sous
 licence [Creative Commons BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : libre d'usage et de
-modification, en citant Gaby.
+modification, en citant Gaby. Voir [`contenu/LICENCE`](contenu/LICENCE).
 
 Tout le reste vient de sources libres, listées ci-dessous. Rien n'est chargé depuis un autre site : tout est dans le dépôt.
 
 ## Textes de lecture (`contenu/lecture/`)
 
-- Fables de **Jean de La Fontaine** (1668) : texte original, domaine public.
+- Fables de **Jean de La Fontaine** (1668-1694) : texte original, d'après les éditions de 1874 et 1897 sur
+  [Wikisource](https://fr.wikisource.org), domaine public.
+- Poèmes d'**Arthur Rimbaud** (« Sensation ») et de **Paul Verlaine** (« Chanson d'automne ») : texte original,
+  d'après Wikisource, domaine public.
 - Contes de **Perrault**, des **frères Grimm**, d'**Andersen**, d'**Ésope** et contes traditionnels : réécrits pour
   l'app (versions courtes pour enfants), sous la même licence que le reste du contenu.
 
