@@ -4,6 +4,14 @@
 
 App de révision ludique du CE1 au CM2 (7 à 11 ans). Tout est en français.
 
+<p align="center">
+  <img src="docs/telephone.jpg" alt="Gaby sur téléphone : une phrase à compléter, a ou à" height="420">
+  &nbsp;
+  <img src="docs/tablette.jpg" alt="Gaby sur tablette : la liste des ateliers à gauche, une division à droite" height="420">
+</p>
+
+Essayer : [www.gaby.webc.fr](https://www.gaby.webc.fr)
+
 - **Maths** : tables, divisions, calcul mental, nombres, mesures et géométrie, problèmes, l'heure.
 - **Français** : dictée (lue à voix haute), grammaire, vocabulaire, synonymes, homophones, et la conjugaison
   (présent, futur, imparfait, passé composé).

@@ -43,4 +43,4 @@ difficiles pour leur niveau, ou plus difficiles que ceux du niveau suivant.
 - **Clavier de la dictée** : l'essayer sur de vrais iPhone, iPad et téléphones Android (il a été testé dans un
   simulateur).
 - **Accessibilité** : vérifier la lecture d'écran (VoiceOver), les contrastes et la taille des boutons.
-- **Captures d'écran** du README : les refaire quand l'app change.
+- **Captures d'écran** du README (`docs/`) : les refaire quand l'app change.
